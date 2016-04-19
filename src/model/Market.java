@@ -14,6 +14,17 @@ public class Market
 		this.address = address;
 		this.product = product;
 	}
+
+	public int getMarketId()
+	{
+		return marketId;
+	}
+
+	public String getAddress() 
+	{
+		return address;
+	}	
+	
 	
 	
 }
