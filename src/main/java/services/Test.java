@@ -6,8 +6,9 @@ public class Test {
 		System.out.println("{greeting} Test");
 	}
 
-	public void greetingWithName(String name) {
-		System.out.println("{greeting} Hello, " + name + "!");
+	public String greetingWithName(String name) {
+		System.out.println("{greetingWithName} Hello, " + name + "!");
+		return "Hello, " + name + "!";
 	}
 	
 }
