@@ -16,6 +16,13 @@ public class Product
 		this.type = type;
 		this.weight = weight;
 	}
+	public Product(int productId, String type, float weight) 
+	{
+		this.parts = null;
+		this.productId = productId;
+		this.type = type;
+		this.weight = weight;
+	}
 
 	public int getProductId() 
 	{
@@ -32,6 +39,9 @@ public class Product
 		return weight;
 	}
 	
+	public void setParts(ArrayList<Part> parts){
+		this.parts = parts;
+	}
 	
 	
 	
