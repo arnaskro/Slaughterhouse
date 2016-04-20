@@ -14,6 +14,11 @@ public class Market
 		this.address = address;
 		this.product = product;
 	}
+	public Market(int marketId, String address){
+		this.marketId = marketId;
+		this.address = address;
+		this.product = null;
+	}
 
 	public int getMarketId()
 	{
@@ -25,6 +30,9 @@ public class Market
 		return address;
 	}	
 	
+	public void setProducts(ArrayList<Product> product){
+		this.product = product;
+	}
 	
 	
 }
