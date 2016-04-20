@@ -2,34 +2,41 @@ package model;
 
 import java.util.ArrayList;
 
-public class Tray 
-{
+public class Tray {
 	private String type;
 	private int trayId;
 	private float maxWeight;
 	private ArrayList<Part> partsId;
-	
-	public Tray(String type, int trayId, float maxWeight)
-	{
+
+	public Tray(String type, int trayId, float maxWeight) {
 		this.type = type;
 		this.trayId = trayId;
 		this.maxWeight = maxWeight;
 	}
 
-	public void setType(String type) 
-	{
+	public String getType() {
+		return this.type;
+	}
+
+	public int getTrayId() {
+		return this.trayId;
+	}
+
+	public float getMaxWeight() {
+		return this.maxWeight;
+	}
+
+	public void setType(String type) {
 		this.type = type;
 	}
 
-	public void setTrayId(int trayId)
-	{
+	public void setTrayId(int trayId) {
 
 		this.trayId = trayId;
 	}
 
-	public void setMaxWeight(float maxWeight)
-	{
+	public void setMaxWeight(float maxWeight) {
 		this.maxWeight = maxWeight;
-	}	
-	
+	}
+
 }
