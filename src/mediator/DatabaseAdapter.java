@@ -63,7 +63,8 @@ public class DatabaseAdapter implements Persistence {
 	}
 
 	public ArrayList<Tray> loadTrays() throws IOException {
-		ArrayList<Tray> array = new ArrayList<Tray>();
+		ArrayList<Tray> trays = new ArrayList<Tray>();
+		ArrayList<Part> parts = new ArrayList<Part>();
 
 		String sql = "SELECT * FROM tray";
 		try {
@@ -73,15 +74,27 @@ public class DatabaseAdapter implements Persistence {
 				String type = row[0].toString();
 				int trayId = Integer.parseInt(row[1].toString());
 				float maxWeight = Float.parseFloat(row[2].toString());
+				
+				String sql2 = "SELECT * FROM part WHERE tray_id = " + trayId;
+				ArrayList<Object[]> results2 = db.query(sql2);
+				for (int j = 0; j < results2.size(); j++) {
+					Object[] row2 = results2.get(j);
+					float weight = Float.parseFloat(row2[0].toString());
+					int partId = Integer.parseInt(row2[1].toString());
+					String type2 = row2[2].toString();
+					int animalId = Integer.parseInt(row2[3].toString());
+					parts.add(new Part(animalId, type2, partId, weight));
+				}
 
-				array.add(new Tray(type, trayId, maxWeight));
+				trays.add(new Tray(type, trayId, maxWeight, parts));
+				parts = new ArrayList<Part>();
 			}
 
 		} catch (Exception e) {
 			throw new IOException(e.getMessage());
 		}
 
-		return array;
+		return trays;
 	}
 
 	@Override

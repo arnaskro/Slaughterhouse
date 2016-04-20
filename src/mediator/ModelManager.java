@@ -39,6 +39,10 @@ public class ModelManager {
 		System.out.println("Trays:");
 		for(int i=0;i<trays.size();i++){
 			System.out.println(trays.get(i).getType() + " " + trays.get(i).getTrayId() + " " + trays.get(i).getMaxWeight());
+			System.out.println("Trays Parts:");
+			for(int j=0;j<trays.get(i).getParts().size();j++){
+				System.out.println("     " + trays.get(i).getParts().get(i).getPartId());
+			}
 		}
 		System.out.println("Products:");
 		for(int i=0;i<products.size();i++){

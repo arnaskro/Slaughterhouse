@@ -32,6 +32,10 @@ public class Tray {
 	public float getMaxWeight() {
 		return this.maxWeight;
 	}
+	
+	public ArrayList<Part> getParts(){
+		return this.partsId;
+	}
 
 	public void setType(String type) {
 		this.type = type;
