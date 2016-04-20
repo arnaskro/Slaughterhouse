@@ -32,7 +32,6 @@ public class ApplicationServerClient implements ApplicationServerInterface
 		ApplicationServerClient client = new ApplicationServerClient();
 	}
 
-	@Override
 	public boolean addAnimal(float weight, String type)
 	{
 		try 
@@ -46,7 +45,6 @@ public class ApplicationServerClient implements ApplicationServerInterface
 		return false;
 	}
 
-	@Override
 	public boolean addPart(int animalId, String type, float weight) 
 	{
 		try 
@@ -60,7 +58,6 @@ public class ApplicationServerClient implements ApplicationServerInterface
 		return false;
 	}
 
-	@Override
 	public boolean addTray(String type, float maxWeight) 
 	{
 		try 
@@ -74,7 +71,6 @@ public class ApplicationServerClient implements ApplicationServerInterface
 		return false;
 	}
 
-	@Override
 	public boolean addToTray(int partId, int trayId) 
 	{
 		try 
@@ -88,7 +84,6 @@ public class ApplicationServerClient implements ApplicationServerInterface
 		return false;
 	}
 
-	@Override
 	public boolean addMarket(String address) 
 	{
 		try 
@@ -102,7 +97,6 @@ public class ApplicationServerClient implements ApplicationServerInterface
 		return false;
 	}
 
-	@Override
 	public boolean packTraysToProduct(String type, float weight, Tray[] trays)
 	{
 		try 
@@ -116,7 +110,6 @@ public class ApplicationServerClient implements ApplicationServerInterface
 		return false;
 	}
 
-	@Override
 	public void transportProductToMarket(int productId, int marketId) 
 	{
 		try
@@ -129,103 +122,86 @@ public class ApplicationServerClient implements ApplicationServerInterface
 		}		
 	}
 
-	@Override
 	public Animal[] getAllAnimal() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Part[] getAllParts() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Tray[] getAllTrays() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Product[] getAllProducts() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Market[] getAllMarkets() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Animal[] getAllAnimalsByType(String type) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Animal getAnimalbyId(int animalId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Part[] getAllPartsByType(String type) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Part[] getAllPartsByAnimal(int animalId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Part getPart(int partId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Tray[] getAllTraysByType(String type) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Tray getTrayById(int trayId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Tray[] getTraysByAnimal(int animalId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Product[] getProductsByType(String type) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Product getProductById(int productId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Market getMarketByProduct(int productId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public String trackAnimal(int animalId) {
 		// TODO Auto-generated method stub
 		return null;

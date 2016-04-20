@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service name="Test">
+     
+    <description>
+        Web service test
+    </description>
+     
+    <parameter name="ServiceClass">services.Test</parameter>
+     
+    <operation name="greeting" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://Slaughterhouse">
+        <actionMapping>urn:greeting</actionMapping>
+        <messageReceiver class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver" />
+    </operation>
+    
+    <operation name="greetingWithName" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://Slaughterhouse">
+        <actionMapping>urn:greetingWithName</actionMapping>
+        <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />
+    </operation>
+    
+     
+</service>

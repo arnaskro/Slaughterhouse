@@ -96,7 +96,6 @@ public class DatabaseAdapter implements Persistence {
 		return trays;
 	}
 
-	@Override
 	public ArrayList<Market> loadMarkets() throws IOException {
 		ArrayList<Market> array = new ArrayList<Market>();
 		
@@ -118,7 +117,6 @@ public class DatabaseAdapter implements Persistence {
 		return array;
 	}
 
-	@Override
 	public ArrayList<Product> loadProducts() throws IOException {
 		ArrayList<Product> array = new ArrayList<Product>();
 		
