@@ -29,7 +29,7 @@ public class DatabaseServer extends UnicastRemoteObject implements DatabaseServe
 	}
 
 	@Override
-	public boolean addPart(int animalID, String type, float weight)
+	public boolean addPart(int animalId, String type, float weight)
 			throws RemoteException
 	{
 		// TODO Auto-generated method stub
