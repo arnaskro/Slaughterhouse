@@ -86,30 +86,47 @@ public class DatabaseAdapter implements Persistence {
 
 	@Override
 	public ArrayList<Market> loadMarkets() throws IOException {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Market> array = new ArrayList<Market>();
+		
+		String sql = "SELECT * FROM market";
+		try {
+			ArrayList<Object[]> results = db.query(sql);
+			for (int i = 0; i < results.size(); i++) {
+				Object[] row = results.get(i);
+				int marketId = Integer.parseInt(row[0].toString());
+				String address = row[1].toString();
+
+				array.add(new Market(marketId, address));
+			}
+
+		} catch (Exception e) {
+			throw new IOException(e.getMessage());
+		}
+
+		return array;
 	}
 
-//	@Override
-//	public ArrayList<Market> loadMarkets() throws IOException {
-//		ArrayList<Market> markets = new ArrayList<Market>();
-//		ArrayList<Product> products = new ArrayList<Product>();
-//
-//		String sql = "SELECT * FROM market";
-//		try {
-//			ArrayList<Object[]> results = db.query(sql);
-//			for (int i = 0; i < results.size(); i++) {
-//				Object[] row = results.get(i);
-//				int marketId = Integer.parseInt(row[0].toString());
-//				String address = row[1].toString();
-//
-//				array.add(new Tray(type, trayId, maxWeight));
-//			}
-//
-//		} catch (Exception e) {
-//			throw new IOException(e.getMessage());
-//		}
-//
-//		return array;
-//	}
+	@Override
+	public ArrayList<Product> loadProducts() throws IOException {
+		ArrayList<Product> array = new ArrayList<Product>();
+		
+		String sql = "SELECT * FROM product";
+		try {
+			ArrayList<Object[]> results = db.query(sql);
+			for (int i = 0; i < results.size(); i++) {
+				Object[] row = results.get(i);
+				int productId = Integer.parseInt(row[0].toString());
+				String type = row[1].toString();
+				float weight = Float.parseFloat(row[2].toString());
+
+
+				array.add(new Product(productId, type, weight));
+			}
+
+		} catch (Exception e) {
+			throw new IOException(e.getMessage());
+		}
+
+		return array;
+	}
 }

@@ -7,6 +7,13 @@ public class Tray {
 	private int trayId;
 	private float maxWeight;
 	private ArrayList<Part> partsId;
+	
+	public Tray(String type, int trayId, float maxWeight, ArrayList<Part> partsId) {
+		this.type = type;
+		this.trayId = trayId;
+		this.maxWeight = maxWeight;
+		this.partsId = partsId;
+	}
 
 	public Tray(String type, int trayId, float maxWeight) {
 		this.type = type;
