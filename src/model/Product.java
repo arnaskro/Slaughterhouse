@@ -9,6 +9,10 @@ public class Product
 	private String type;
 	private float weight;
 	
+	public Product() {
+		this(0, "?", 0);
+	}
+	
 	public Product(ArrayList<Part> parts, int productId, String type, float weight) 
 	{
 		this.parts = parts;

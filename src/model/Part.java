@@ -7,6 +7,10 @@ public class Part
 	private int partId;  //ID to that part
 	private float weight;
 	
+	public Part() {
+		this(0, "?", 0, 0);
+	}
+	
 	public Part(int animalId, String type, int partId, float weight)
 	{
 		this.animalId = animalId; // or Animal.getAnimalId();
