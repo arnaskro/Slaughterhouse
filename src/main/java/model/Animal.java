@@ -5,8 +5,12 @@ import java.util.ArrayList;
 public class Animal 
 {
 	private float weight;
-	private static int animalId;
+	private int animalId;
 	private String type;
+	
+	public Animal() {
+		this(0, 0, "?");
+	}
 	
 	public Animal (float weight, int animalId, String type)
 	{
@@ -20,7 +24,7 @@ public class Animal
 		return weight;
 	}
 
-	public static int getAnimalId()
+	public int getAnimalId()
 	{
 		return animalId;
 	}

@@ -8,6 +8,10 @@ public class Market
 	private String address;
 	private  ArrayList<Product> product;
 	
+	public Market() {
+		this(0, "?");
+	}
+	
 	public Market(int marketId, String address, ArrayList<Product> product)
 	{
 		this.marketId = marketId;

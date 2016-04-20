@@ -8,6 +8,10 @@ public class Tray {
 	private float maxWeight;
 	private ArrayList<Part> partsId;
 	
+	public Tray() {
+		this("?", 0, 0);
+	}
+	
 	public Tray(String type, int trayId, float maxWeight, ArrayList<Part> partsId) {
 		this.type = type;
 		this.trayId = trayId;
