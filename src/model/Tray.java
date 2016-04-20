@@ -15,5 +15,21 @@ public class Tray
 		this.trayId = trayId;
 		this.maxWeight = maxWeight;
 	}
+
+	public void setType(String type) 
+	{
+		this.type = type;
+	}
+
+	public void setTrayId(int trayId)
+	{
+
+		this.trayId = trayId;
+	}
+
+	public void setMaxWeight(float maxWeight)
+	{
+		this.maxWeight = maxWeight;
+	}	
 	
 }
