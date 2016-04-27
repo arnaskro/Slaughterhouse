@@ -13,14 +13,14 @@ public class ApplicationServer implements ApplicationServerInterface
 {
 	public DatabaseServerInterface server;
 	
-	public ApplicationServer() throws RemoteException
+	public ApplicationServer(DatabaseServerInterface server) throws RemoteException
 	{
 		super();
+		
 		try 
 		{
-			
 			prnt("trying to connect to the Database Server!");
-			server = (DatabaseServerInterface) Naming.lookup("rmi://localhost:1099/SlaughterHouse");
+			this.server = server;
 			prnt("connection to the Database Server successful!");
 		} 
 		catch (Exception e) 
@@ -31,11 +31,6 @@ public class ApplicationServer implements ApplicationServerInterface
 	
 	public static void prnt(String message){
 		System.out.println("{ApplicationServerClient} " + message);
-	}
-	
-	public static void main(String [] args) throws RemoteException
-	{
-		ApplicationServerInterface client = new ApplicationServer();
 	}
 
 	public String greeting(String name) {

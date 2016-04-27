@@ -21,9 +21,10 @@ public class DatabaseServer extends UnicastRemoteObject implements DatabaseServe
 	private ArrayList<Tray> trays;
 	private ArrayList<Product> products;
 	private ArrayList<Market> markets;
-	
-	protected DatabaseServer() throws RemoteException 
+		
+	public DatabaseServer() throws RemoteException 
 	{
+		super();
 		
 		try {
 			database = new DatabaseAdapter();
@@ -33,6 +34,8 @@ public class DatabaseServer extends UnicastRemoteObject implements DatabaseServe
 			trays = database.loadTrays();
 			products = database.loadProducts();
 			markets = database.loadMarkets();
+			
+			System.out.println("{DatabaseServer} Loaded models from the database!");
 		} catch (Exception e) {
 			e.getMessage();
 		}
