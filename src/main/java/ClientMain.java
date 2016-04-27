@@ -17,7 +17,7 @@ public class ClientMain {
 			
 			System.out.println("* Starting Client View *\n");
 			view.start(controller);
-		} catch (RemoteException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		

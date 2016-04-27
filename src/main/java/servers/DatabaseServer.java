@@ -28,7 +28,6 @@ public class DatabaseServer extends UnicastRemoteObject implements DatabaseServe
 		
 		try {
 			database = new DatabaseAdapter();
-			addAnimal(50, "cow");
 			
 			animals = database.loadAnimals();
 			parts = database.loadParts();
