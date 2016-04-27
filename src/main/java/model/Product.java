@@ -47,6 +47,8 @@ public class Product
 		this.parts = parts;
 	}
 	
-	
+	public ArrayList<Part> getParts(){
+		return parts;
+	}
 	
 }

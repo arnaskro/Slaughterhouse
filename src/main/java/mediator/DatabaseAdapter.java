@@ -97,7 +97,7 @@ public class DatabaseAdapter implements Persistence {
 	}
 
 	public ArrayList<Market> loadMarkets() throws IOException {
-		ArrayList<Market> array = new ArrayList<Market>();
+		ArrayList<Market> markets = new ArrayList<Market>();
 		
 		String sql = "SELECT * FROM market";
 		try {
@@ -106,20 +106,31 @@ public class DatabaseAdapter implements Persistence {
 				Object[] row = results.get(i);
 				int marketId = Integer.parseInt(row[0].toString());
 				String address = row[1].toString();
+				
+				ArrayList<Product> products = new ArrayList<Product>();
+				String sql2 = "SELECT * FROM product WHERE market_id = " + marketId;
+				ArrayList<Object[]> results2 = db.query(sql2);
+				for (int j = 0; j < results2.size(); j++) {
+					Object[] row2 = results2.get(j);
+					int productId = Integer.parseInt(row2[0].toString());
+					String type = row2[1].toString();
+					float weight = Float.parseFloat(row2[3].toString());
+					
+					products.add(new Product(productId, type, weight));
+				}
 
-				array.add(new Market(marketId, address));
+				markets.add(new Market(marketId, address, products));
 			}
 
 		} catch (Exception e) {
 			throw new IOException(e.getMessage());
 		}
 
-		return array;
+		return markets;
 	}
-
+	
 	public ArrayList<Product> loadProducts() throws IOException {
-		ArrayList<Product> array = new ArrayList<Product>();
-		
+		ArrayList<Product> products = new ArrayList<Product>();
 		String sql = "SELECT * FROM product";
 		try {
 			ArrayList<Object[]> results = db.query(sql);
@@ -127,16 +138,34 @@ public class DatabaseAdapter implements Persistence {
 				Object[] row = results.get(i);
 				int productId = Integer.parseInt(row[0].toString());
 				String type = row[1].toString();
-				float weight = Float.parseFloat(row[2].toString());
-
-
-				array.add(new Product(productId, type, weight));
+				float weight = Float.parseFloat(row[3].toString());
+				
+				ArrayList<Part> parts = new ArrayList<Part>();
+				String sql2 = "SELECT tray_id FROM packing WHERE product_id  = " + productId;
+				ArrayList<Object[]> results2 = db.query(sql2);
+				for (int j = 0; j < results2.size(); j++) {
+					Object[] row2 = results2.get(j);
+					int trayId = Integer.parseInt(row2[0].toString());
+					
+					String sql3 = "SELECT * FROM part WHERE tray_id  = " + trayId;
+					ArrayList<Object[]> results3= db.query(sql3);
+					for (int k = 0; k < results3.size(); k++) {
+						Object[] row3 = results3.get(k);
+						float weight2 = Float.parseFloat(row3[0].toString());
+						int partId = Integer.parseInt(row3[1].toString());
+						String type2 = row3[2].toString();
+						int animalId = Integer.parseInt(row3[3].toString());
+						parts.add(new Part(animalId, type2, partId, weight2));
+					}
+					
+				}
+				products.add(new Product(parts, productId, type, weight));
 			}
 
 		} catch (Exception e) {
 			throw new IOException(e.getMessage());
 		}
 
-		return array;
+		return products;
 	}
 }

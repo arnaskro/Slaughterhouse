@@ -71,10 +71,22 @@ public class DatabaseServer extends UnicastRemoteObject implements DatabaseServe
 		for (int i = 0; i < products.size(); i++) {
 			System.out.println(products.get(i).getProductId() + " " + products.get(i).getType() + " "
 					+ products.get(i).getWeight());
+			System.out.println("Product parts:");
+			for (int j = 0; j < products.get(i).getParts().size(); j++) {
+				System.out.println(products.get(i).getParts().get(j).getPartId() + " "
+						+ products.get(i).getParts().get(j).getType() + " "
+						+ products.get(i).getParts().get(j).getWeight());
+			}
 		}
 		System.out.println("Markets:");
 		for (int i = 0; i < markets.size(); i++) {
 			System.out.println(markets.get(i).getMarketId() + " " + markets.get(i).getAddress());
+			System.out.println("Markets products:");
+			for (int j = 0; j < markets.get(i).getProducts().size(); j++) {
+				System.out.println(markets.get(i).getProducts().get(j).getProductId() + " "
+						+ markets.get(i).getProducts().get(j).getType() + " "
+						+ markets.get(i).getProducts().get(j).getWeight());
+			}
 		}
 	}
 	

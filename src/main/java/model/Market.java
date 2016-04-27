@@ -38,5 +38,10 @@ public class Market
 		this.product = product;
 	}
 	
+	public ArrayList<Product> getProducts(){
+		return product;
+	}
+	
+	
 	
 }
