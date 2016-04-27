@@ -9,18 +9,18 @@ import model.Part;
 import model.Product;
 import model.Tray;
 
-public class ApplicationServer implements ApplicationServerInterface
+public class ApplicationServer implements Model
 {
-	public DatabaseServerInterface server;
+	private  DatabaseServerInterface server;
 	
-	public ApplicationServer(DatabaseServerInterface server) throws RemoteException
+	public ApplicationServer() throws RemoteException
 	{
 		super();
 		
 		try 
 		{
 			prnt("trying to connect to the Database Server!");
-			this.server = server;
+			server = (DatabaseServerInterface) Naming.lookup("rmi://localhost:1099/SlaughterHouse");;
 			prnt("connection to the Database Server successful!");
 		} 
 		catch (Exception e) 
@@ -219,6 +219,5 @@ public class ApplicationServer implements ApplicationServerInterface
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
 	
 }

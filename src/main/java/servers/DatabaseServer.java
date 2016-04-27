@@ -137,8 +137,7 @@ public class DatabaseServer extends UnicastRemoteObject implements DatabaseServe
 
 	public Animal[] getAllAnimals() throws RemoteException 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return animals.toArray(new Animal[animals.size()]);
 	}
 
 	public Part[] getAllParts() throws RemoteException
@@ -170,7 +169,7 @@ public class DatabaseServer extends UnicastRemoteObject implements DatabaseServe
 	{
 		try
 		{
-			System.out.println("{DatabaseServer} Starting started...");
+			System.out.println("{DatabaseServer} Starting server...");
 			Registry reg = LocateRegistry.createRegistry(1099);
 			DatabaseServerInterface rmiServer = new DatabaseServer();
 			Naming.rebind("SlaughterHouse", rmiServer);

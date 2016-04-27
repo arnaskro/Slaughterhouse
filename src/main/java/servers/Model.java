@@ -6,7 +6,7 @@ import model.Part;
 import model.Product;
 import model.Tray;
 
-public interface ApplicationServerInterface
+public interface Model
 {
 	public boolean addAnimal(float weight, String type);
 	public boolean addPart(int animalId, String type, float weight);
