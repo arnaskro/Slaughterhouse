@@ -28,12 +28,22 @@ public class ClientController implements Controller {
 			getAllTrays();
 		} else if (what.equals("getAllMarkets")) {
 			getAllMarkets(); 
+		} else if (what.equals("addAnimal")) {
+			addAnimal(); 
 		} else {
 			// Do nothing
 			view.show("Execution error");
 		}
 	}
 
+	private void addAnimal() {
+		Float weight = Float.parseFloat(view.get("weight"));
+		String type = view.get("type");
+		
+		view.show(""+model.addAnimal(weight, type));
+		
+	}
+	
 	private void getAllMarkets() {
 		Market[] animals = model.getAllMarkets();
 		view.showAllMarkets(animals);

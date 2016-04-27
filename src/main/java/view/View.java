@@ -17,4 +17,6 @@ public interface View {
 	public void showAllTrays(Tray[] trays);
 	public void showAllProducts(Product[] products);
 	public void showAllMarkets(Market[] markets);
+	
+	public String get(String whatToGet);
 }

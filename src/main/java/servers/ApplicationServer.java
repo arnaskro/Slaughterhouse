@@ -49,7 +49,7 @@ public class ApplicationServer implements Model
 	{
 		try 
 		{
-			server.addAnimal(weight, type);
+			return server.addAnimal(weight, type);
 		} 
 		catch (RemoteException e) 
 		{
