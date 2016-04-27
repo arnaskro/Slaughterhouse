@@ -1,5 +1,6 @@
 package servers;
 
+import java.io.IOException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -25,11 +26,8 @@ public class DatabaseServer extends UnicastRemoteObject implements DatabaseServe
 		super();
 		try {
 			database = new DatabaseAdapter();
-			animals = database.loadAnimals();
-			parts = database.loadParts();
-			trays = database.loadTrays();
-			products = database.loadProducts();
-			markets = database.loadMarkets();
+
+			updateDatabase();
 
 			System.out.println("{DatabaseServer} Models loaded from the database successfully!");
 		} catch (Exception e) {
@@ -37,10 +35,24 @@ public class DatabaseServer extends UnicastRemoteObject implements DatabaseServe
 		}
 
 	}
+	
+	private void updateDatabase() {
+		try {
+			animals = database.loadAnimals();
+			parts = database.loadParts();
+			trays = database.loadTrays();
+			products = database.loadProducts();
+			markets = database.loadMarkets();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	public boolean addAnimal(float weight, String type) throws RemoteException {
 		try {
 			database.saveAnimal(weight, type);
+			updateDatabase();
 			return true;
 		} catch (Exception e) {
 			e.getMessage();
@@ -51,6 +63,7 @@ public class DatabaseServer extends UnicastRemoteObject implements DatabaseServe
 	public boolean addPart(int animalId, String type, float weight) throws RemoteException {
 		try {
 			database.savePart(animalId, type, weight);
+			updateDatabase();
 			return true;
 		} catch (Exception e) {
 			e.getMessage();
@@ -61,6 +74,7 @@ public class DatabaseServer extends UnicastRemoteObject implements DatabaseServe
 	public boolean addtray(String type, float maxWeight) throws RemoteException {
 		try {
 			database.saveTray(type, maxWeight);
+			updateDatabase();
 			return true;
 		} catch (Exception e) {
 			e.getMessage();
@@ -71,6 +85,7 @@ public class DatabaseServer extends UnicastRemoteObject implements DatabaseServe
 	public boolean addToTray(int partId, int trayId) throws RemoteException {
 		try {
 			database.addToTray(partId, trayId);
+			updateDatabase();
 			return true;
 		} catch (Exception e) {
 			e.getMessage();
@@ -81,6 +96,7 @@ public class DatabaseServer extends UnicastRemoteObject implements DatabaseServe
 	public boolean addMarket(String address) throws RemoteException {
 		try {
 			database.saveMarket(address);
+			updateDatabase();
 			return true;
 		} catch (Exception e) {
 			e.getMessage();
@@ -91,6 +107,7 @@ public class DatabaseServer extends UnicastRemoteObject implements DatabaseServe
 	public boolean packTraysToProduct(String type, float weight, Tray[] trays) throws RemoteException {
 		try {
 			database.packTraysToProduct(type, weight, trays);
+			updateDatabase();
 			return true;
 		} catch (Exception e) {
 			e.getMessage();
@@ -101,6 +118,7 @@ public class DatabaseServer extends UnicastRemoteObject implements DatabaseServe
 	public boolean transportTomarket(int productId, int marketId) throws RemoteException {
 		try {
 			database.transportTomarket(productId, marketId);
+			updateDatabase();
 			return true;
 		} catch (Exception e) {
 			e.getMessage();
@@ -109,22 +127,27 @@ public class DatabaseServer extends UnicastRemoteObject implements DatabaseServe
 	}
 
 	public Animal[] getAllAnimals() throws RemoteException {
+		updateDatabase();
 		return animals;
 	}
 
 	public Part[] getAllParts() throws RemoteException {
+		updateDatabase();
 		return parts;
 	}
 
 	public Tray[] getAllTrays() throws RemoteException {
+		updateDatabase();
 		return trays;
 	}
 
 	public Product[] getAllProducts() throws RemoteException {
+		updateDatabase();
 		return products;
 	}
 
 	public Market[] getAllMarkets() throws RemoteException {
+		updateDatabase();
 		return markets;
 	}
 
