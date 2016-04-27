@@ -23,9 +23,8 @@ public class DatabaseServer extends UnicastRemoteObject implements DatabaseServe
 
 	public DatabaseServer() throws RemoteException {
 		super();
-
 		try {
-			database = new DatabaseAdapter();			
+			database = new DatabaseAdapter();
 			animals = database.loadAnimals();
 			parts = database.loadParts();
 			trays = database.loadTrays();
@@ -99,13 +98,14 @@ public class DatabaseServer extends UnicastRemoteObject implements DatabaseServe
 		return false;
 	}
 
-	public void transportTomarket(int productId, int marketId) throws RemoteException {
+	public boolean transportTomarket(int productId, int marketId) throws RemoteException {
 		try {
 			database.transportTomarket(productId, marketId);
+			return true;
 		} catch (Exception e) {
 			e.getMessage();
 		}
-
+		return false;
 	}
 
 	public Animal[] getAllAnimals() throws RemoteException {

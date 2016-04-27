@@ -24,7 +24,7 @@ public interface DatabaseServerInterface extends Remote
 	
 	public boolean packTraysToProduct(String type, float weight, Tray trays[]) throws RemoteException;
 	
-	public void transportTomarket(int productId, int marketId) throws RemoteException;
+	public boolean transportTomarket(int productId, int marketId) throws RemoteException;
 	
 	public Animal[] getAllAnimals() throws RemoteException;
 	

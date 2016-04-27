@@ -14,7 +14,7 @@ public interface Model
 	public boolean addToTray(int partId, int trayId);
 	public boolean addMarket(String address);
 	public boolean packTraysToProduct(String type, float weight, Tray trays[]);
-	public void transportProductToMarket(int productId, int marketId);
+	public boolean transportProductToMarket(int productId, int marketId);
 	
 	public Animal[] getAllAnimals();
 	public Part[] getAllParts();

@@ -123,7 +123,7 @@ public class ApplicationServer implements Model
 		return false;
 	}
 
-	public void transportProductToMarket(int productId, int marketId) 
+	public boolean transportProductToMarket(int productId, int marketId) 
 	{
 		try
 		{
@@ -132,7 +132,8 @@ public class ApplicationServer implements Model
 		catch (Exception e) 
 		{
 			e.printStackTrace();
-		}		
+		}	
+		return false;
 	}
 
 	public Animal[] getAllAnimals() {

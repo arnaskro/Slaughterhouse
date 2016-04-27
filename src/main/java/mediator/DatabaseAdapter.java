@@ -252,11 +252,17 @@ public class DatabaseAdapter implements Persistence {
 	}
 
 	public void packTraysToProduct(String type, float weight, Tray[] trays) {
-		String sql = "INSERT INTO product (type, weight) VALUES ('" + type + "', " + weight + ");";
-		// String sql2 = "INSERT INTO packing (tray_id, product_id) VALUES ('" +
-		// type + "', " + weight + ");";
+		String sql = "INSERT INTO product (type, weight) VALUES ('" + type + "', " + weight + ")";
+		int productId;
 		try {
 			db.update(sql);
+			ArrayList<Object[]> r = db.query("SELECT MAX(product_id) FROM product;");
+			Object[] row = r.get(0);
+			productId = Integer.parseInt(row[0].toString());
+			for(int i=0;i<trays.length;i++){
+				String sql2 = "INSERT INTO packing (tray_id, product_id) VALUES (" + trays[i].getTrayId() + ", " + productId +");";
+				db.update(sql2);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
