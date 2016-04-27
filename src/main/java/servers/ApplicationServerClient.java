@@ -11,15 +11,21 @@ import model.Tray;
 
 public class ApplicationServerClient implements ApplicationServerInterface
 {
-	private DatabaseServerInterface server;
+	public DatabaseServerInterface server;
 	
 	public ApplicationServerClient() throws RemoteException
 	{
 		super();
 		try 
 		{
+			
+			prnt("trying to connect to the Database Server!");
 			server = (DatabaseServerInterface) Naming.lookup("rmi://localhost:1099/SlaughterHouse");
-			System.out.println(server.addAnimal(123, "Pig")); //TEST: Return false
+			prnt("connection to the Database Server successful!");
+			
+			prnt("simple test:");
+			prnt(""+server.addAnimal(123, "Pig")); //TEST: Return false
+			while(true) {}
 		} 
 		catch (Exception e) 
 		{
@@ -27,11 +33,28 @@ public class ApplicationServerClient implements ApplicationServerInterface
 		}
 	}
 	
+	public static void prnt(String message){
+		System.out.println("{ApplicationServerClient} " + message);
+	}
+	
 	public static void main(String [] args) throws RemoteException
 	{
+		prnt("main method");
 		ApplicationServerClient client = new ApplicationServerClient();
 	}
 
+	public String greeting(String name) {
+		String result = "";
+		
+		if (name == null) 
+			result = "Hello";
+		else 
+			result = "Hello, " + name + "!";
+		
+		prnt(result);
+		return result;
+	}
+	
 	public boolean addAnimal(float weight, String type)
 	{
 		try 
