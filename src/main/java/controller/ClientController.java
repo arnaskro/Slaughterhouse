@@ -7,7 +7,6 @@ import view.View;
 public class ClientController implements Controller {
 	private Model model;
 	private View view;
-	private String result;
 
 	public ClientController(Model model, View view) {
 		this.model = model;
@@ -24,16 +23,7 @@ public class ClientController implements Controller {
 	}
 
 	private void getAllAnimals() {
-		result = "?";
-		
 		Animal[] animals = model.getAllAnimals();
-				
-		result = "All animals:";
-		
-		for (Animal animal : animals) {
-			result += "\n[ID:" + animal.getAnimalId() + ", Type:" + animal.getType() + ", Weight:" + animal.getWeight() + "]";
-		}
-		
-		view.show(result);
+		view.showAllAnimals(animals);
 	}
 }

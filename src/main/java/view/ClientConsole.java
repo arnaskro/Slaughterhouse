@@ -3,6 +3,7 @@ package view;
 import java.util.Scanner;
 
 import controller.Controller;
+import model.Animal;
 
 public class ClientConsole implements View {
 	private Scanner input;
@@ -40,15 +41,30 @@ public class ClientConsole implements View {
 	             choice=-1;
 	         }
 	         
-	         show("\nPress ENTER to continue...");
-	         input.nextLine();
-	         input.nextLine();
+	         show("\nPress any key to continue...");
+	         try
+	         {
+	             System.in.read();
+	         }  
+	         catch(Exception e)
+	         {}  
 	         
 	      } while(choice!=-1);
 	}
 	
 	public void show(String message) {
 		System.out.println(message);
+	}
+
+	@Override
+	public void showAllAnimals(Animal[] animals) {
+		String result = "All animals:";
+		
+		for (Animal animal : animals) {
+			result += "\n[ID:" + animal.getAnimalId() + ", Type:" + animal.getType() + ", Weight:" + animal.getWeight() + "]";
+		}
+		
+		show(result);
 	}
 	
 }
