@@ -19,9 +19,10 @@ public class DatabaseAdapter implements Persistence {
 		this.db = new MyDatabase(DB_NAME);
 	}
 
-	public ArrayList<Animal> loadAnimals() throws IOException {
+	public Animal[] loadAnimals() throws IOException {
 		ArrayList<Animal> array = new ArrayList<Animal>();
-
+		Animal[] result = null;
+		
 		String sql = "SELECT * FROM animal";
 		try {
 			ArrayList<Object[]> results = db.query(sql);
@@ -33,16 +34,23 @@ public class DatabaseAdapter implements Persistence {
 
 				array.add(new Animal(weight, animalId, type));
 			}
-
+			
+			result = new Animal[array.size()];
+			
+			for (int i = 0; i < array.size(); i++) {
+				result[i] = array.get(i);
+			}
+			
 		} catch (Exception e) {
 			throw new IOException(e.getMessage());
 		}
 
-		return array;
+		return result;
 	}
 
-	public ArrayList<Part> loadParts() throws IOException {
+	public Part[] loadParts() throws IOException {
 		ArrayList<Part> array = new ArrayList<Part>();
+		Part[] result = null;
 
 		String sql = "SELECT * FROM part";
 		try {
@@ -56,16 +64,25 @@ public class DatabaseAdapter implements Persistence {
 				array.add(new Part(animalId, type, partId, weight));
 			}
 
+			result = new Part[array.size()];
+			
+			for (int i = 0; i < array.size(); i++) {
+				result[i] = array.get(i);
+			}
+			
+			
 		} catch (Exception e) {
 			throw new IOException(e.getMessage());
 		}
 
-		return array;
+		return result;
 	}
 
-	public ArrayList<Tray> loadTrays() throws IOException {
+	public Tray[] loadTrays() throws IOException {
 		ArrayList<Tray> trays = new ArrayList<Tray>();
 
+		Tray[] result = null;
+		
 		String sql = "SELECT * FROM tray";
 		try {
 			ArrayList<Object[]> results = db.query(sql);
@@ -90,15 +107,22 @@ public class DatabaseAdapter implements Persistence {
 				trays.add(new Tray(type, trayId, maxWeight, parts));
 			}
 
+			result = new Tray[trays.size()];
+			
+			for (int i = 0; i < trays.size(); i++) {
+				result[i] = trays.get(i);
+			}
+			
 		} catch (Exception e) {
 			throw new IOException(e.getMessage());
 		}
 
-		return trays;
+		return result;
 	}
 
-	public ArrayList<Market> loadMarkets() throws IOException {
+	public Market[] loadMarkets() throws IOException {
 		ArrayList<Market> markets = new ArrayList<Market>();
+		Market[] result = null;
 		
 		String sql = "SELECT * FROM market";
 		try {
@@ -123,15 +147,23 @@ public class DatabaseAdapter implements Persistence {
 				markets.add(new Market(marketId, address, products));
 			}
 
+			result = new Market[markets.size()];
+			
+			for (int i = 0; i < markets.size(); i++) {
+				result[i] = markets.get(i);
+			}
+			
 		} catch (Exception e) {
 			throw new IOException(e.getMessage());
 		}
 
-		return markets;
+		return result;
 	}
 	
-	public ArrayList<Product> loadProducts() throws IOException {
+	public Product[] loadProducts() throws IOException {
 		ArrayList<Product> products = new ArrayList<Product>();
+		Product[] result = null;
+		
 		String sql = "SELECT * FROM product";
 		try {
 			ArrayList<Object[]> results = db.query(sql);
@@ -162,12 +194,17 @@ public class DatabaseAdapter implements Persistence {
 				}
 				products.add(new Product(parts, productId, type, weight));
 			}
-
+			
+			result = new Product[products.size()];
+			
+			for (int i = 0; i < products.size(); i++) {
+				result[i] = products.get(i);
+			}
 		} catch (Exception e) {
 			throw new IOException(e.getMessage());
 		}
 
-		return products;
+		return result;
 	}
 	public void saveAnimal(float weight, String type){
 		String sql = "INSERT INTO animal VALUES (" + weight + ", 1, '" + type + "');";

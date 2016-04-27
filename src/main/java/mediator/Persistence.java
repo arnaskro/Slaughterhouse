@@ -11,10 +11,10 @@ import model.Tray;
 
 public interface Persistence {
 
-	   public ArrayList<Animal> loadAnimals() throws IOException;
-	   public ArrayList<Part> loadParts() throws IOException;
-	   public ArrayList<Tray> loadTrays() throws IOException;
-	   public ArrayList<Product> loadProducts() throws IOException;
-	   public ArrayList<Market> loadMarkets() throws IOException;
+	   public Animal[] loadAnimals() throws IOException;
+	   public Part[] loadParts() throws IOException;
+	   public Tray[] loadTrays() throws IOException;
+	   public Product[] loadProducts() throws IOException;
+	   public Market[] loadMarkets() throws IOException;
 	   public void saveAnimal(float weight, String type) throws IOException;
 }

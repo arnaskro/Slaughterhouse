@@ -16,11 +16,11 @@ import servers.DatabaseServerInterface;
 public class DatabaseServer extends UnicastRemoteObject implements DatabaseServerInterface
 {
 	private Persistence database;
-	private ArrayList<Animal> animals;
-	private ArrayList<Part> parts;
-	private ArrayList<Tray> trays;
-	private ArrayList<Product> products;
-	private ArrayList<Market> markets;
+	private Animal[] animals;
+	private Part[] parts;
+	private Tray[] trays;
+	private Product[] products;
+	private Market[] markets;
 		
 	public DatabaseServer() throws RemoteException 
 	{
@@ -45,10 +45,9 @@ public class DatabaseServer extends UnicastRemoteObject implements DatabaseServe
 	
 	public boolean addAnimal(float weight, String type) throws RemoteException 
 	{
-		// TODO Auto-generated method stub
 		try {
-//			database = new DatabaseAdapter();
 			database.saveAnimal(weight, type);
+			return true;
 		} catch (Exception e) {
 			e.getMessage();
 		}
@@ -96,40 +95,29 @@ public class DatabaseServer extends UnicastRemoteObject implements DatabaseServe
 
 	public Animal[] getAllAnimals() throws RemoteException 
 	{
-		Animal[] result = new Animal[animals.size()];
-		
-		for (int i = 0; i < animals.size(); i++) {
-			result[i] = animals.get(i);
-		}
-		
-		return result;
+		return animals;
 	}
 
 	public Part[] getAllParts() throws RemoteException
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return parts;
 	}
 
 	public Tray[] getAllTrays() throws RemoteException
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return trays;
 	}
 
 	public Product[] getAllProducts() throws RemoteException 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return products;
 	}
 
 	public Market[] getAllMarkets() throws RemoteException 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return markets;
 	}
-	
-	
+		
 	public static void main(String[] args) 
 	{
 		try
