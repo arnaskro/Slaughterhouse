@@ -28,10 +28,9 @@ public class DatabaseAdapter implements Persistence {
 			ArrayList<Object[]> results = db.query(sql);
 			for (int i = 0; i < results.size(); i++) {
 				Object[] row = results.get(i);
-				float weight = Float.parseFloat(row[0].toString());
-				int animalId = Integer.parseInt(row[1].toString());
-				String type = row[2].toString();
-
+				int animalId = Integer.parseInt(row[0].toString());
+				String type = row[1].toString();
+				float weight = Float.parseFloat(row[2].toString());
 				array.add(new Animal(weight, animalId, type));
 			}
 			
@@ -57,8 +56,8 @@ public class DatabaseAdapter implements Persistence {
 			ArrayList<Object[]> results = db.query(sql);
 			for (int i = 0; i < results.size(); i++) {
 				Object[] row = results.get(i);
-				float weight = Float.parseFloat(row[0].toString());
-				int partId = Integer.parseInt(row[1].toString());
+				int partId = Integer.parseInt(row[0].toString());
+				float weight = Float.parseFloat(row[1].toString());
 				String type = row[2].toString();
 				int animalId = Integer.parseInt(row[3].toString());
 				array.add(new Part(animalId, type, partId, weight));
@@ -88,8 +87,8 @@ public class DatabaseAdapter implements Persistence {
 			ArrayList<Object[]> results = db.query(sql);
 			for (int i = 0; i < results.size(); i++) {
 				Object[] row = results.get(i);
-				String type = row[0].toString();
-				int trayId = Integer.parseInt(row[1].toString());
+				int trayId = Integer.parseInt(row[0].toString());
+				String type = row[1].toString();
 				float maxWeight = Float.parseFloat(row[2].toString());
 				
 				ArrayList<Part> parts = new ArrayList<Part>();
@@ -97,8 +96,8 @@ public class DatabaseAdapter implements Persistence {
 				ArrayList<Object[]> results2 = db.query(sql2);
 				for (int j = 0; j < results2.size(); j++) {
 					Object[] row2 = results2.get(j);
-					float weight = Float.parseFloat(row2[0].toString());
-					int partId = Integer.parseInt(row2[1].toString());
+					int partId = Integer.parseInt(row2[0].toString());
+					float weight = Float.parseFloat(row2[1].toString());
 					String type2 = row2[2].toString();
 					int animalId = Integer.parseInt(row2[3].toString());
 					parts.add(new Part(animalId, type2, partId, weight));
@@ -184,8 +183,8 @@ public class DatabaseAdapter implements Persistence {
 					ArrayList<Object[]> results3= db.query(sql3);
 					for (int k = 0; k < results3.size(); k++) {
 						Object[] row3 = results3.get(k);
-						float weight2 = Float.parseFloat(row3[0].toString());
-						int partId = Integer.parseInt(row3[1].toString());
+						int partId = Integer.parseInt(row3[0].toString());
+						float weight2 = Float.parseFloat(row3[1].toString());
 						String type2 = row3[2].toString();
 						int animalId = Integer.parseInt(row3[3].toString());
 						parts.add(new Part(animalId, type2, partId, weight2));
