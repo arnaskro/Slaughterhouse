@@ -23,8 +23,8 @@
 	            <artifactId>axis2-java2wsdl-maven-plugin</artifactId>
 	            <version>1.7.1</version>
 	            <configuration>
-	                <className>servers.DatabaseServer</className>
-	                <outputFileName>${project.build.directory}/DatabaseServer.wsdl</outputFileName>
+	                <className>services.PublicWebService</className>
+	                <outputFileName>${project.build.directory}/PublicWebService.wsdl</outputFileName>
 	            </configuration>
 	            <executions>
 	                <execution> 
@@ -42,7 +42,7 @@
 	            <version>1.7.1</version>
 	            <configuration>
 	                <servicesXmlFile>${basedir}/src/resources/services.xml</servicesXmlFile>
-	                <wsdlFile>${project.build.directory}/DatabaseServer.wsdl</wsdlFile>
+	                <wsdlFile>${project.build.directory}/PublicWebService.wsdl</wsdlFile>
 	            </configuration>
 	            <executions>
 	                <execution>
@@ -53,7 +53,6 @@
 	                </execution>
 	            </executions>
 	        </plugin>
-	        
 	    </plugins>
 
 	    <pluginManagement>

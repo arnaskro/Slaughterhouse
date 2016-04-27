@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<service name="DatabaseServer">
+<service name="PublicWebService">
      
     <description>
-        Web service DatabaseServer
+        Public Web Services
     </description>
      
-    <parameter name="ServiceClass">servers.DatabaseServer</parameter>
+    <parameter name="ServiceClass">services.PublicWebService</parameter>
     
     <operation name="getAllAnimals" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://Slaughterhouse">
         <actionMapping>urn:getAllAnimals</actionMapping>
+        <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />
+    </operation>    
+    
+    <operation name="greeting" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://Slaughterhouse">
+        <actionMapping>urn:greeting</actionMapping>
         <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />
     </operation>
     

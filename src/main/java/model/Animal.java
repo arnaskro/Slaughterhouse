@@ -7,7 +7,7 @@ public class Animal implements Serializable
 {
 	private float weight;
 	private int animalId;
-	private String type;
+	public String type;
 	
 	public Animal() {
 		this(0, 0, "?");
