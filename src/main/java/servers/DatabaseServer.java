@@ -13,37 +13,33 @@ import model.*;
 import servers.DatabaseServerInterface;
 
 @SuppressWarnings("serial")
-public class DatabaseServer extends UnicastRemoteObject implements DatabaseServerInterface
-{
+public class DatabaseServer extends UnicastRemoteObject implements DatabaseServerInterface {
 	private Persistence database;
 	private Animal[] animals;
 	private Part[] parts;
 	private Tray[] trays;
 	private Product[] products;
 	private Market[] markets;
-		
-	public DatabaseServer() throws RemoteException 
-	{
+
+	public DatabaseServer() throws RemoteException {
 		super();
-		
+
 		try {
-			database = new DatabaseAdapter();
-			
+			database = new DatabaseAdapter();			
 			animals = database.loadAnimals();
 			parts = database.loadParts();
 			trays = database.loadTrays();
 			products = database.loadProducts();
 			markets = database.loadMarkets();
-			
+
 			System.out.println("{DatabaseServer} Models loaded from the database successfully!");
 		} catch (Exception e) {
 			e.getMessage();
 		}
-	
+
 	}
-	
-	public boolean addAnimal(float weight, String type) throws RemoteException 
-	{
+
+	public boolean addAnimal(float weight, String type) throws RemoteException {
 		try {
 			database.saveAnimal(weight, type);
 			return true;
@@ -53,84 +49,95 @@ public class DatabaseServer extends UnicastRemoteObject implements DatabaseServe
 		return false;
 	}
 
-	public boolean addPart(int animalId, String type, float weight)
-			throws RemoteException
-	{
-		// TODO Auto-generated method stub
+	public boolean addPart(int animalId, String type, float weight) throws RemoteException {
+		try {
+			database.savePart(animalId, type, weight);
+			return true;
+		} catch (Exception e) {
+			e.getMessage();
+		}
 		return false;
 	}
 
-	public boolean addtray(String type, float maxWeight) throws RemoteException 
-	{
-		// TODO Auto-generated method stub
+	public boolean addtray(String type, float maxWeight) throws RemoteException {
+		try {
+			database.saveTray(type, maxWeight);
+			return true;
+		} catch (Exception e) {
+			e.getMessage();
+		}
 		return false;
 	}
 
-	public boolean addToTray(int partId, int trayId) throws RemoteException 
-	{
-		// TODO Auto-generated method stub
+	public boolean addToTray(int partId, int trayId) throws RemoteException {
+		try {
+			database.addToTray(partId, trayId);
+			return true;
+		} catch (Exception e) {
+			e.getMessage();
+		}
 		return false;
 	}
 
-	public boolean addMarket(String address) throws RemoteException 
-	{
-		// TODO Auto-generated method stub
+	public boolean addMarket(String address) throws RemoteException {
+		try {
+			database.saveMarket(address);
+			return true;
+		} catch (Exception e) {
+			e.getMessage();
+		}
 		return false;
 	}
 
-	public boolean packTraysToProduct(String type, float weight, Tray[] trays)
-			throws RemoteException 
-	{
-		// TODO Auto-generated method stub
+	public boolean packTraysToProduct(String type, float weight, Tray[] trays) throws RemoteException {
+		try {
+			database.packTraysToProduct(type, weight, trays);
+			return true;
+		} catch (Exception e) {
+			e.getMessage();
+		}
 		return false;
 	}
 
-	public void transportTomarket(int productId, int marketId)
-			throws RemoteException 
-	{
-		// TODO Auto-generated method stub
-		
+	public void transportTomarket(int productId, int marketId) throws RemoteException {
+		try {
+			database.transportTomarket(productId, marketId);
+		} catch (Exception e) {
+			e.getMessage();
+		}
+
 	}
 
-	public Animal[] getAllAnimals() throws RemoteException 
-	{
+	public Animal[] getAllAnimals() throws RemoteException {
 		return animals;
 	}
 
-	public Part[] getAllParts() throws RemoteException
-	{
+	public Part[] getAllParts() throws RemoteException {
 		return parts;
 	}
 
-	public Tray[] getAllTrays() throws RemoteException
-	{
+	public Tray[] getAllTrays() throws RemoteException {
 		return trays;
 	}
 
-	public Product[] getAllProducts() throws RemoteException 
-	{
+	public Product[] getAllProducts() throws RemoteException {
 		return products;
 	}
 
-	public Market[] getAllMarkets() throws RemoteException 
-	{
+	public Market[] getAllMarkets() throws RemoteException {
 		return markets;
 	}
-		
-	public static void main(String[] args) 
-	{
-		try
-		{
+
+	public static void main(String[] args) {
+		try {
 			System.out.println("{DatabaseServer} Starting server...");
 			Registry reg = LocateRegistry.createRegistry(1099);
 			DatabaseServerInterface rmiServer = new DatabaseServer();
 			Naming.rebind("SlaughterHouse", rmiServer);
 			System.out.println("{DatabaseServer} Server running...");
-		} 
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 }
