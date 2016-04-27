@@ -2,7 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>services</groupId>
+  <groupId>servers</groupId>
   <artifactId>Slaughterhouse</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
@@ -23,8 +23,8 @@
 	            <artifactId>axis2-java2wsdl-maven-plugin</artifactId>
 	            <version>1.7.1</version>
 	            <configuration>
-	                <className>services.Test</className>
-	                <outputFileName>${project.build.directory}/Test.wsdl</outputFileName>
+	                <className>servers.ApplicationServerClient</className>
+	                <outputFileName>${project.build.directory}/ApplicationServerClient.wsdl</outputFileName>
 	            </configuration>
 	            <executions>
 	                <execution> 
@@ -42,7 +42,7 @@
 	            <version>1.7.1</version>
 	            <configuration>
 	                <servicesXmlFile>${basedir}/src/resources/services.xml</servicesXmlFile>
-	                <wsdlFile>${project.build.directory}/Test.wsdl</wsdlFile>
+	                <wsdlFile>${project.build.directory}/ApplicationServerClient.wsdl</wsdlFile>
 	            </configuration>
 	            <executions>
 	                <execution>

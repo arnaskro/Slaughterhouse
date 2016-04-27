@@ -6,12 +6,10 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
-import model.Animal;
-import model.Market;
-import model.Part;
-import model.Product;
-import model.Tray;
+import model.*;
+import servers.DatabaseServerInterface;
 
+@SuppressWarnings("serial")
 public class DatabaseServer extends UnicastRemoteObject implements DatabaseServerInterface
 {
 
@@ -96,14 +94,16 @@ public class DatabaseServer extends UnicastRemoteObject implements DatabaseServe
 		return null;
 	}
 	
+	
 	public static void main(String[] args) 
 	{
 		try
 		{
+			System.out.println("{DatabaseServer} Starting started...");
 			Registry reg = LocateRegistry.createRegistry(1099);
 			DatabaseServerInterface rmiServer = new DatabaseServer();
 			Naming.rebind("SlaughterHouse", rmiServer);
-			System.out.println("Starting server...");
+			System.out.println("{DatabaseServer} Server started...");
 		} 
 		catch (Exception e)
 		{
