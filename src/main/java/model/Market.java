@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Market 
+public class Market implements Serializable
 {
 	private int marketId;
 	private String address;

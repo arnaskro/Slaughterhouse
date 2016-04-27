@@ -1,8 +1,10 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Tray {
+public class Tray implements Serializable
+{
 	private String type;
 	private int trayId;
 	private float maxWeight;

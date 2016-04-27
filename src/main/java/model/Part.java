@@ -1,6 +1,8 @@
 package model;
 
-public class Part 
+import java.io.Serializable;
+
+public class Part implements Serializable
 {	
 	private int animalId;
 	private String type; //what part from the animal
@@ -27,6 +29,11 @@ public class Part
 	public int getPartId()
 	{
 		return partId;
+	}
+	
+	public int getAnimalId()
+	{
+		return animalId;
 	}
 
 	public String getType() 
