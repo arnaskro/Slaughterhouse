@@ -6,7 +6,7 @@ import model.Part;
 import model.Product;
 import model.Tray;
 
-public interface ApplicationServerInterface
+public interface Model
 {
 	public boolean addAnimal(float weight, String type);
 	public boolean addPart(int animalId, String type, float weight);
@@ -16,7 +16,7 @@ public interface ApplicationServerInterface
 	public boolean packTraysToProduct(String type, float weight, Tray trays[]);
 	public void transportProductToMarket(int productId, int marketId);
 	
-	public Animal[] getAllAnimal();
+	public Animal[] getAllAnimals();
 	public Part[] getAllParts();
 	public Tray[] getAllTrays();
 	public Product[] getAllProducts();

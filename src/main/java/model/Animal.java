@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Animal 
+public class Animal implements Serializable
 {
 	private float weight;
 	private int animalId;

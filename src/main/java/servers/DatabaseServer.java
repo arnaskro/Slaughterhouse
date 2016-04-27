@@ -36,59 +36,11 @@ public class DatabaseServer extends UnicastRemoteObject implements DatabaseServe
 			products = database.loadProducts();
 			markets = database.loadMarkets();
 			
-			System.out.println("{DatabaseServer} Loaded models from the database!");
+			System.out.println("{DatabaseServer} Models loaded from the database successfully!");
 		} catch (Exception e) {
 			e.getMessage();
 		}
-		
-		
-		printDatabase();
 	
-	}
-	
-	private void printDatabase()
-	{
-		System.out.println("Animals:");
-		for (int i = 0; i < animals.size(); i++) {
-			System.out.println(
-					animals.get(i).getWeight() + " " + animals.get(i).getAnimalId() + " " + animals.get(i).getType());
-		}
-		System.out.println("Parts:");
-		for (int i = 0; i < parts.size(); i++) {
-			System.out
-					.println(parts.get(i).getPartId() + " " + parts.get(i).getType() + " " + parts.get(i).getWeight());
-		}
-		System.out.println("Trays:");
-		for (int i = 0; i < trays.size(); i++) {
-			System.out.println(
-					trays.get(i).getType() + " " + trays.get(i).getTrayId() + " " + trays.get(i).getMaxWeight());
-			System.out.println("Trays Parts:");
-			for (int j = 0; j < trays.get(i).getParts().size(); j++) {
-				System.out.println("     " + trays.get(i).getParts().get(j).getPartId() + " "
-						+ trays.get(i).getParts().get(j).getType() + " " + trays.get(i).getParts().get(j).getWeight());
-			}
-		}
-		System.out.println("Products:");
-		for (int i = 0; i < products.size(); i++) {
-			System.out.println(products.get(i).getProductId() + " " + products.get(i).getType() + " "
-					+ products.get(i).getWeight());
-			System.out.println("Product parts:");
-			for (int j = 0; j < products.get(i).getParts().size(); j++) {
-				System.out.println(products.get(i).getParts().get(j).getPartId() + " "
-						+ products.get(i).getParts().get(j).getType() + " "
-						+ products.get(i).getParts().get(j).getWeight());
-			}
-		}
-		System.out.println("Markets:");
-		for (int i = 0; i < markets.size(); i++) {
-			System.out.println(markets.get(i).getMarketId() + " " + markets.get(i).getAddress());
-			System.out.println("Markets products:");
-			for (int j = 0; j < markets.get(i).getProducts().size(); j++) {
-				System.out.println(markets.get(i).getProducts().get(j).getProductId() + " "
-						+ markets.get(i).getProducts().get(j).getType() + " "
-						+ markets.get(i).getProducts().get(j).getWeight());
-			}
-		}
 	}
 	
 	public boolean addAnimal(float weight, String type) throws RemoteException 
@@ -144,8 +96,13 @@ public class DatabaseServer extends UnicastRemoteObject implements DatabaseServe
 
 	public Animal[] getAllAnimals() throws RemoteException 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		Animal[] result = new Animal[animals.size()];
+		
+		for (int i = 0; i < animals.size(); i++) {
+			result[i] = animals.get(i);
+		}
+		
+		return result;
 	}
 
 	public Part[] getAllParts() throws RemoteException
@@ -177,11 +134,11 @@ public class DatabaseServer extends UnicastRemoteObject implements DatabaseServe
 	{
 		try
 		{
-			System.out.println("{DatabaseServer} Starting started...");
+			System.out.println("{DatabaseServer} Starting server...");
 			Registry reg = LocateRegistry.createRegistry(1099);
 			DatabaseServerInterface rmiServer = new DatabaseServer();
 			Naming.rebind("SlaughterHouse", rmiServer);
-			System.out.println("{DatabaseServer} Server started...");
+			System.out.println("{DatabaseServer} Server running...");
 		} 
 		catch (Exception e)
 		{
