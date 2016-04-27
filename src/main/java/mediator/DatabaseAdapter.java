@@ -1,6 +1,7 @@
 package mediator;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import model.Animal;
@@ -167,5 +168,13 @@ public class DatabaseAdapter implements Persistence {
 		}
 
 		return products;
+	}
+	public void saveAnimal(float weight, String type){
+		String sql = "INSERT INTO animal VALUES (" + weight + ", 1, '" + type + "');";
+		try {
+			db.update(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

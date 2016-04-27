@@ -28,6 +28,7 @@ public class DatabaseServer extends UnicastRemoteObject implements DatabaseServe
 		
 		try {
 			database = new DatabaseAdapter();
+			addAnimal(50, "cow");
 			
 			animals = database.loadAnimals();
 			parts = database.loadParts();
@@ -93,6 +94,12 @@ public class DatabaseServer extends UnicastRemoteObject implements DatabaseServe
 	public boolean addAnimal(float weight, String type) throws RemoteException 
 	{
 		// TODO Auto-generated method stub
+		try {
+//			database = new DatabaseAdapter();
+			database.saveAnimal(weight, type);
+		} catch (Exception e) {
+			e.getMessage();
+		}
 		return false;
 	}
 

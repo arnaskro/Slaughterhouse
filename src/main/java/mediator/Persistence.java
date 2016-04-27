@@ -16,4 +16,5 @@ public interface Persistence {
 	   public ArrayList<Tray> loadTrays() throws IOException;
 	   public ArrayList<Product> loadProducts() throws IOException;
 	   public ArrayList<Market> loadMarkets() throws IOException;
+	   public void saveAnimal(float weight, String type) throws IOException;
 }
