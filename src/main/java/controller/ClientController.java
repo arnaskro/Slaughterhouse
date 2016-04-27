@@ -18,23 +18,19 @@ public class ClientController implements Controller {
 	}
 
 	public void execute(String what) {
-		switch (what) {
-		case "getAllAnimals":
+		if (what.equals("getAllAnimals")) {
 			getAllAnimals();
-		break;		
-		case "getAllParts":
+		} else if (what.equals("getAllParts")) {
 			getAllParts();
-		break;		
-		case "getAllProducts":
+		} else if (what.equals("getAllProducts")) {
 			getAllProducts();
-		break;		
-		case "getAllTrays":
+		} else if (what.equals("getAllTrays")) {
 			getAllTrays();
-		break;		
-		case "getAllMarkets":
-			getAllMarkets();
-		break;		
-		default: break;
+		} else if (what.equals("getAllMarkets")) {
+			getAllMarkets(); 
+		} else {
+			// Do nothing
+			view.show("Execution error");
 		}
 	}
 

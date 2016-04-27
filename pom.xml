@@ -4,7 +4,7 @@
 
   <groupId>servers</groupId>
   <artifactId>Slaughterhouse</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.2-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>Slaughterhouse</name>
@@ -23,8 +23,8 @@
 	            <artifactId>axis2-java2wsdl-maven-plugin</artifactId>
 	            <version>1.7.1</version>
 	            <configuration>
-	                <className>servers.ApplicationServerClient</className>
-	                <outputFileName>${project.build.directory}/ApplicationServerClient.wsdl</outputFileName>
+	                <className>servers.DatabaseServer</className>
+	                <outputFileName>${project.build.directory}/DatabaseServer.wsdl</outputFileName>
 	            </configuration>
 	            <executions>
 	                <execution> 
@@ -42,7 +42,7 @@
 	            <version>1.7.1</version>
 	            <configuration>
 	                <servicesXmlFile>${basedir}/src/resources/services.xml</servicesXmlFile>
-	                <wsdlFile>${project.build.directory}/ApplicationServerClient.wsdl</wsdlFile>
+	                <wsdlFile>${project.build.directory}/DatabaseServer.wsdl</wsdlFile>
 	            </configuration>
 	            <executions>
 	                <execution>
