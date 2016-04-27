@@ -135,28 +135,68 @@ public class ApplicationServer implements Model
 		}		
 	}
 
-	public Animal[] getAllAnimal() {
-		// TODO Auto-generated method stub
+	public Animal[] getAllAnimals() {
+		try
+		{
+			return server.getAllAnimals();
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 
 	public Part[] getAllParts() {
-		// TODO Auto-generated method stub
+		try
+		{
+			return server.getAllParts();
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 
 	public Tray[] getAllTrays() {
-		// TODO Auto-generated method stub
+		try
+		{
+			return server.getAllTrays();
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 
 	public Product[] getAllProducts() {
-		// TODO Auto-generated method stub
+		try
+		{
+			return server.getAllProducts();
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 
 	public Market[] getAllMarkets() {
-		// TODO Auto-generated method stub
+		try
+		{
+			return server.getAllMarkets();
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 

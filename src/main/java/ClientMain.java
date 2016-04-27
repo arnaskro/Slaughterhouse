@@ -15,6 +15,7 @@ public class ClientMain {
 			View view = new ClientConsole();
 			Controller controller = new ClientController(model, view);
 			
+			System.out.println("* Starting Client View *\n");
 			view.start(controller);
 		} catch (RemoteException e) {
 			e.printStackTrace();
