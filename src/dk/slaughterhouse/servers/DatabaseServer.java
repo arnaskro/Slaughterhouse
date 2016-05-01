@@ -27,10 +27,10 @@ public class DatabaseServer extends UnicastRemoteObject implements DatabaseServe
 			database = new DatabaseAdapter();
 
 			updateDatabase();
-
+			
 			System.out.println("{DatabaseServer} Models loaded from the database successfully!");
 		} catch (Exception e) {
-			e.getMessage();
+			System.out.println(e.getMessage());
 		}
 
 	}
