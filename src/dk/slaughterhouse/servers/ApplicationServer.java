@@ -62,7 +62,7 @@ public class ApplicationServer implements Model
 	{
 		try 
 		{
-			server.addPart(animalId, type, weight);
+			return server.addPart(animalId, type, weight);
 		} 
 		catch (RemoteException e)
 		{
@@ -75,7 +75,7 @@ public class ApplicationServer implements Model
 	{
 		try 
 		{
-			server.addtray(type, maxWeight);
+			return server.addtray(type, maxWeight);
 		} 
 		catch (Exception e) 
 		{
@@ -88,7 +88,7 @@ public class ApplicationServer implements Model
 	{
 		try 
 		{
-			server.addToTray(partId, trayId);
+			return server.addToTray(partId, trayId);
 		} 
 		catch (Exception e) 
 		{
@@ -101,7 +101,7 @@ public class ApplicationServer implements Model
 	{
 		try 
 		{
-			server.addMarket(address);
+			return server.addMarket(address);
 		} 
 		catch (RemoteException e)
 		{
@@ -114,7 +114,7 @@ public class ApplicationServer implements Model
 	{
 		try 
 		{
-			server.packTraysToProduct(type, weight, trays);
+			return server.packTraysToProduct(type, weight, trays);
 		} 
 		catch (RemoteException e) 
 		{
@@ -127,7 +127,7 @@ public class ApplicationServer implements Model
 	{
 		try
 		{
-			server.transportTomarket(productId, marketId);
+			return server.transportTomarket(productId, marketId);
 		} 
 		catch (Exception e) 
 		{

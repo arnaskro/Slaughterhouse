@@ -19,10 +19,13 @@ public class ClientConsole implements View {
 		show("\t3. Get all trays");
 		show("\t4. Get all products");
 		show("\t5. Get all markets");
-		show("\t6. Add animal");
+		show("\t6. Register animal");
 		show("\t7. Tranport product to market");
 		show("\t8. Track animal");
 		show("\t9. Pack product");
+		show("\t10. Register Animal Part");
+		show("\t11. Register Tray");
+		show("\t12. Put parts into Tray");
 		show("\t0. quit");
 		show("-----------------------------------------");
 		show("* Type in your choice");
@@ -67,6 +70,15 @@ public class ClientConsole implements View {
 		            break;
 	         case 9: 
 		            controller.execute("packProduct");
+		            break;
+	         case 10: 
+		            controller.execute("addAnimalPart"); 
+		            break;
+	         case 11: 
+		            controller.execute("addTray"); //d
+		            break;
+	         case 12: 
+		            controller.execute("putToTray"); //d
 		            break;
 	         default:
 	             show("Shutting down");

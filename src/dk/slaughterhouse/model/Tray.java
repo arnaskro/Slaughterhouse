@@ -55,5 +55,15 @@ public class Tray implements Serializable
 	public void setMaxWeight(float maxWeight) {
 		this.maxWeight = maxWeight;
 	}
+	
+	public float getCurrentWeight() {
+		float result = 0;
+		
+		for (int i=0; i < partsId.size(); i++) {
+			result += partsId.get(i).getWeight();
+		}
+		
+		return result;
+	}
 
 }

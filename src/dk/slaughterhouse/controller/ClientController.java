@@ -34,10 +34,90 @@ public class ClientController implements Controller {
 			trackProducts();
 		} else if (what.equals("packProduct")) {
 			packProduct();
+		} else if(what.equals("addAnimalPart")){
+			addAnimalPart();
+		} else if(what.equals("addTray")){
+			addTray();
+		} else if(what.equals("putToTray")){
+			putToTray();
 		}  else {
 			// Do nothing
 			view.show("Execution error");
 		}
+	}
+	
+	private void putToTray()
+	{
+		Tray[] trays = model.getAllTrays();
+		view.showAllTrays(trays);
+		
+		int trayId = Integer.parseInt(view.get("which tray ID?"));
+		Tray tray = null;
+		
+		for(int i = 0; i < trays.length; i++)
+		{
+			if(trays[i].getTrayId() == trayId)
+			{
+				tray = trays[i];
+			}
+		}
+
+		view.show("The trays max weight is: " +tray.getMaxWeight());
+		view.show("The trays current weight is: " +tray.getCurrentWeight() + "\n");
+				
+		Part[] parts = model.getAllParts();		
+		ArrayList<Part> partsToShow = new ArrayList<>();
+		
+		boolean a = true;
+		
+		for (int k = 0; k < parts.length; k++) {
+			
+			a = true;
+			
+			for(int i = 0; i < trays.length; i++) {
+				for(int j = 0; j < trays[i].getParts().size(); j++) {
+					if (trays[i].getParts().get(j).getPartId() == parts[k].getPartId()) {
+						a = false;
+					}
+				}
+			}
+			
+			if (a) {
+				partsToShow.add(parts[k]);
+			}
+		}
+	
+	
+		Part[] newParts = new Part[partsToShow.size()];
+		
+		for (int i = 0; i < partsToShow.size(); i++) {
+			newParts[i] = partsToShow.get(i);
+		}
+		
+		
+		view.showAllParts(newParts);
+		int partId = Integer.parseInt(view.get("part Id"));
+		
+		view.show("" + model.addToTray(partId, trayId));
+	}
+	
+	private void addTray()
+	{
+		Part[] animals = model.getAllParts();
+		view.showAllParts(animals);
+		String type = view.get("type");
+		Float maxWeight = Float.parseFloat(view.get("max weight"));
+		view.show("" + model.addTray(type, maxWeight));
+	}
+	
+	private void addAnimalPart()
+	{
+		Animal[] animals = model.getAllAnimals();
+		view.showAllAnimals(animals);
+		int animalId = Integer.parseInt(view.get("animal Id"));
+		Float weight = Float.parseFloat(view.get("part weight"));
+		String type = view.get("partType");
+		view.show("" + model.addPart(animalId, type, weight));
 	}
 
 	private void addAnimal() {
@@ -115,6 +195,7 @@ public class ClientController implements Controller {
 			for (int j = 0; j < products[k].getParts().size(); j++) {
 				if (products[k].getParts().get(j).getAnimalId() == animalId) {
 					productIds.add(products[k].getProductId());
+					break;
 				}
 			}
 		}
