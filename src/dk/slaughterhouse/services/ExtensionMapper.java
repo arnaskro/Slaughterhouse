@@ -18,6 +18,21 @@ public class ExtensionMapper {
         java.lang.String namespaceURI, java.lang.String typeName,
         javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception {
         if ("http://model.slaughterhouse.dk/xsd".equals(namespaceURI) &&
+                "Market".equals(typeName)) {
+            return dk.slaughterhouse.model.xsd.Market.Factory.parse(reader);
+        }
+
+        if ("http://model.slaughterhouse.dk/xsd".equals(namespaceURI) &&
+                "Product".equals(typeName)) {
+            return dk.slaughterhouse.model.xsd.Product.Factory.parse(reader);
+        }
+
+        if ("http://model.slaughterhouse.dk/xsd".equals(namespaceURI) &&
+                "Part".equals(typeName)) {
+            return dk.slaughterhouse.model.xsd.Part.Factory.parse(reader);
+        }
+
+        if ("http://model.slaughterhouse.dk/xsd".equals(namespaceURI) &&
                 "Animal".equals(typeName)) {
             return dk.slaughterhouse.model.xsd.Animal.Factory.parse(reader);
         }

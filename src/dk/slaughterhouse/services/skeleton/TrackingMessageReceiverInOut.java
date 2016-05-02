@@ -39,36 +39,52 @@ public class TrackingMessageReceiverInOut extends org.apache.axis2.receivers.Abs
                     ((methodName = org.apache.axis2.util.JavaUtils.xmlNameToJavaIdentifier(
                             op.getName().getLocalPart())) != null)) {
                 if ("getAnimals".equals(methodName)) {
-                    dk.slaughterhouse.services.GetAnimalsResponse getAnimalsResponse13 =
+                    dk.slaughterhouse.services.GetAnimalsResponse getAnimalsResponse19 =
                         null;
                     dk.slaughterhouse.services.GetAnimals wrappedParam = (dk.slaughterhouse.services.GetAnimals) fromOM(msgContext.getEnvelope()
                                                                                                                                   .getBody()
                                                                                                                                   .getFirstElement(),
                             dk.slaughterhouse.services.GetAnimals.class);
 
-                    getAnimalsResponse13 = skel.getAnimals(wrappedParam);
+                    getAnimalsResponse19 = skel.getAnimals(wrappedParam);
 
                     envelope = toEnvelope(getSOAPFactory(msgContext),
-                            getAnimalsResponse13, false,
+                            getAnimalsResponse19, false,
                             new javax.xml.namespace.QName(
                                 "http://services.slaughterhouse.dk",
                                 "getAnimalsResponse"));
                 } else
                  if ("trackAnimal".equals(methodName)) {
-                    dk.slaughterhouse.services.TrackAnimalResponse trackAnimalResponse15 =
+                    dk.slaughterhouse.services.TrackAnimalResponse trackAnimalResponse21 =
                         null;
                     dk.slaughterhouse.services.TrackAnimal wrappedParam = (dk.slaughterhouse.services.TrackAnimal) fromOM(msgContext.getEnvelope()
                                                                                                                                     .getBody()
                                                                                                                                     .getFirstElement(),
                             dk.slaughterhouse.services.TrackAnimal.class);
 
-                    trackAnimalResponse15 = skel.trackAnimal(wrappedParam);
+                    trackAnimalResponse21 = skel.trackAnimal(wrappedParam);
 
                     envelope = toEnvelope(getSOAPFactory(msgContext),
-                            trackAnimalResponse15, false,
+                            trackAnimalResponse21, false,
                             new javax.xml.namespace.QName(
                                 "http://services.slaughterhouse.dk",
                                 "trackAnimalResponse"));
+                } else
+                 if ("trackProduct".equals(methodName)) {
+                    dk.slaughterhouse.services.TrackProductResponse trackProductResponse23 =
+                        null;
+                    dk.slaughterhouse.services.TrackProduct wrappedParam = (dk.slaughterhouse.services.TrackProduct) fromOM(msgContext.getEnvelope()
+                                                                                                                                      .getBody()
+                                                                                                                                      .getFirstElement(),
+                            dk.slaughterhouse.services.TrackProduct.class);
+
+                    trackProductResponse23 = skel.trackProduct(wrappedParam);
+
+                    envelope = toEnvelope(getSOAPFactory(msgContext),
+                            trackProductResponse23, false,
+                            new javax.xml.namespace.QName(
+                                "http://services.slaughterhouse.dk",
+                                "trackProductResponse"));
                 } else {
                     throw new java.lang.RuntimeException("method not found");
                 }
@@ -125,6 +141,28 @@ public class TrackingMessageReceiverInOut extends org.apache.axis2.receivers.Abs
         }
     }
 
+    private org.apache.axiom.om.OMElement toOM(
+        dk.slaughterhouse.services.TrackProduct param, boolean optimizeContent)
+        throws org.apache.axis2.AxisFault {
+        try {
+            return param.getOMElement(dk.slaughterhouse.services.TrackProduct.MY_QNAME,
+                org.apache.axiom.om.OMAbstractFactory.getOMFactory());
+        } catch (org.apache.axis2.databinding.ADBException e) {
+            throw org.apache.axis2.AxisFault.makeFault(e);
+        }
+    }
+
+    private org.apache.axiom.om.OMElement toOM(
+        dk.slaughterhouse.services.TrackProductResponse param,
+        boolean optimizeContent) throws org.apache.axis2.AxisFault {
+        try {
+            return param.getOMElement(dk.slaughterhouse.services.TrackProductResponse.MY_QNAME,
+                org.apache.axiom.om.OMAbstractFactory.getOMFactory());
+        } catch (org.apache.axis2.databinding.ADBException e) {
+            throw org.apache.axis2.AxisFault.makeFault(e);
+        }
+    }
+
     private org.apache.axiom.soap.SOAPEnvelope toEnvelope(
         org.apache.axiom.soap.SOAPFactory factory,
         dk.slaughterhouse.services.GetAnimalsResponse param,
@@ -175,6 +213,31 @@ public class TrackingMessageReceiverInOut extends org.apache.axis2.receivers.Abs
         return wrappedElement;
     }
 
+    private org.apache.axiom.soap.SOAPEnvelope toEnvelope(
+        org.apache.axiom.soap.SOAPFactory factory,
+        dk.slaughterhouse.services.TrackProductResponse param,
+        boolean optimizeContent, javax.xml.namespace.QName elementQName)
+        throws org.apache.axis2.AxisFault {
+        try {
+            org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
+
+            emptyEnvelope.getBody()
+                         .addChild(param.getOMElement(
+                    dk.slaughterhouse.services.TrackProductResponse.MY_QNAME,
+                    factory));
+
+            return emptyEnvelope;
+        } catch (org.apache.axis2.databinding.ADBException e) {
+            throw org.apache.axis2.AxisFault.makeFault(e);
+        }
+    }
+
+    private dk.slaughterhouse.services.TrackProductResponse wraptrackProduct() {
+        dk.slaughterhouse.services.TrackProductResponse wrappedElement = new dk.slaughterhouse.services.TrackProductResponse();
+
+        return wrappedElement;
+    }
+
     /**
      *  get the default envelope
      */
@@ -201,6 +264,15 @@ public class TrackingMessageReceiverInOut extends org.apache.axis2.receivers.Abs
             if (dk.slaughterhouse.services.TrackAnimalResponse.class.equals(
                         type)) {
                 return dk.slaughterhouse.services.TrackAnimalResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+            }
+
+            if (dk.slaughterhouse.services.TrackProduct.class.equals(type)) {
+                return dk.slaughterhouse.services.TrackProduct.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+            }
+
+            if (dk.slaughterhouse.services.TrackProductResponse.class.equals(
+                        type)) {
+                return dk.slaughterhouse.services.TrackProductResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
             }
         } catch (java.lang.Exception e) {
             throw org.apache.axis2.AxisFault.makeFault(e);

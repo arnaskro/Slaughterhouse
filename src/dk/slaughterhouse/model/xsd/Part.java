@@ -1,79 +1,158 @@
 /**
- * TrackAnimalResponse.java
+ * Part.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.7.1  Built on : Feb 20, 2016 (10:02:19 GMT)
  */
-package dk.slaughterhouse.services;
+package dk.slaughterhouse.model.xsd;
 
 
 /**
- *  TrackAnimalResponse bean class
+ *  Part bean class
  */
 @SuppressWarnings({"unchecked",
     "unused"
 })
-public class TrackAnimalResponse implements org.apache.axis2.databinding.ADBBean {
-    public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName("http://services.slaughterhouse.dk",
-            "trackAnimalResponse", "ns2");
+public class Part implements org.apache.axis2.databinding.ADBBean {
+    /* This type was generated from the piece of schema that had
+       name = Part
+       Namespace URI = http://model.slaughterhouse.dk/xsd
+       Namespace Prefix = ns1
+     */
 
     /**
-     * field for _return
-     * This was an Array!
+     * field for AnimalId
      */
-    protected dk.slaughterhouse.model.xsd.Product[] local_return;
+    protected int localAnimalId;
 
     /*  This tracker boolean wil be used to detect whether the user called the set method
      *   for this attribute. It will be used to determine whether to include this field
      *   in the serialized XML
      */
-    protected boolean local_returnTracker = false;
+    protected boolean localAnimalIdTracker = false;
 
-    public boolean is_returnSpecified() {
-        return local_returnTracker;
+    /**
+     * field for PartId
+     */
+    protected int localPartId;
+
+    /*  This tracker boolean wil be used to detect whether the user called the set method
+     *   for this attribute. It will be used to determine whether to include this field
+     *   in the serialized XML
+     */
+    protected boolean localPartIdTracker = false;
+
+    /**
+     * field for Type
+     */
+    protected java.lang.String localType;
+
+    /*  This tracker boolean wil be used to detect whether the user called the set method
+     *   for this attribute. It will be used to determine whether to include this field
+     *   in the serialized XML
+     */
+    protected boolean localTypeTracker = false;
+
+    /**
+     * field for Weight
+     */
+    protected float localWeight;
+
+    /*  This tracker boolean wil be used to detect whether the user called the set method
+     *   for this attribute. It will be used to determine whether to include this field
+     *   in the serialized XML
+     */
+    protected boolean localWeightTracker = false;
+
+    public boolean isAnimalIdSpecified() {
+        return localAnimalIdTracker;
     }
 
     /**
      * Auto generated getter method
-     * @return dk.slaughterhouse.model.xsd.Product[]
+     * @return int
      */
-    public dk.slaughterhouse.model.xsd.Product[] get_return() {
-        return local_return;
-    }
-
-    /**
-     * validate the array for _return
-     */
-    protected void validate_return(dk.slaughterhouse.model.xsd.Product[] param) {
+    public int getAnimalId() {
+        return localAnimalId;
     }
 
     /**
      * Auto generated setter method
-     * @param param _return
+     * @param param AnimalId
      */
-    public void set_return(dk.slaughterhouse.model.xsd.Product[] param) {
-        validate_return(param);
+    public void setAnimalId(int param) {
+        // setting primitive attribute tracker to true
+        localAnimalIdTracker = param != java.lang.Integer.MIN_VALUE;
 
-        local_returnTracker = true;
+        this.localAnimalId = param;
+    }
 
-        this.local_return = param;
+    public boolean isPartIdSpecified() {
+        return localPartIdTracker;
     }
 
     /**
-     * Auto generated add method for the array for convenience
-     * @param param dk.slaughterhouse.model.xsd.Product
+     * Auto generated getter method
+     * @return int
      */
-    public void add_return(dk.slaughterhouse.model.xsd.Product param) {
-        if (local_return == null) {
-            local_return = new dk.slaughterhouse.model.xsd.Product[] {  };
-        }
+    public int getPartId() {
+        return localPartId;
+    }
 
-        //update the setting tracker
-        local_returnTracker = true;
+    /**
+     * Auto generated setter method
+     * @param param PartId
+     */
+    public void setPartId(int param) {
+        // setting primitive attribute tracker to true
+        localPartIdTracker = param != java.lang.Integer.MIN_VALUE;
 
-        java.util.List list = org.apache.axis2.databinding.utils.ConverterUtil.toList(local_return);
-        list.add(param);
-        this.local_return = (dk.slaughterhouse.model.xsd.Product[]) list.toArray(new dk.slaughterhouse.model.xsd.Product[list.size()]);
+        this.localPartId = param;
+    }
+
+    public boolean isTypeSpecified() {
+        return localTypeTracker;
+    }
+
+    /**
+     * Auto generated getter method
+     * @return java.lang.String
+     */
+    public java.lang.String getType() {
+        return localType;
+    }
+
+    /**
+     * Auto generated setter method
+     * @param param Type
+     */
+    public void setType(java.lang.String param) {
+        localTypeTracker = true;
+
+        this.localType = param;
+    }
+
+    public boolean isWeightSpecified() {
+        return localWeightTracker;
+    }
+
+    /**
+     * Auto generated getter method
+     * @return float
+     */
+    public float getWeight() {
+        return localWeight;
+    }
+
+    /**
+     * Auto generated setter method
+     * @param param Weight
+     */
+    public void setWeight(float param) {
+        // setting primitive attribute tracker to true
+        localWeightTracker = !java.lang.Float.isNaN(param);
+
+        this.localWeight = param;
     }
 
     /**
@@ -87,7 +166,7 @@ public class TrackAnimalResponse implements org.apache.axis2.databinding.ADBBean
         final org.apache.axiom.om.OMFactory factory)
         throws org.apache.axis2.databinding.ADBException {
         return factory.createOMElement(new org.apache.axis2.databinding.ADBDataSource(
-                this, MY_QNAME));
+                this, parentQName));
     }
 
     public void serialize(final javax.xml.namespace.QName parentQName,
@@ -111,57 +190,87 @@ public class TrackAnimalResponse implements org.apache.axis2.databinding.ADBBean
 
         if (serializeType) {
             java.lang.String namespacePrefix = registerPrefix(xmlWriter,
-                    "http://services.slaughterhouse.dk");
+                    "http://model.slaughterhouse.dk/xsd");
 
             if ((namespacePrefix != null) &&
                     (namespacePrefix.trim().length() > 0)) {
                 writeAttribute("xsi",
                     "http://www.w3.org/2001/XMLSchema-instance", "type",
-                    namespacePrefix + ":trackAnimalResponse", xmlWriter);
+                    namespacePrefix + ":Part", xmlWriter);
             } else {
                 writeAttribute("xsi",
                     "http://www.w3.org/2001/XMLSchema-instance", "type",
-                    "trackAnimalResponse", xmlWriter);
+                    "Part", xmlWriter);
             }
         }
 
-        if (local_returnTracker) {
-            if (local_return != null) {
-                for (int i = 0; i < local_return.length; i++) {
-                    if (local_return[i] != null) {
-                        local_return[i].serialize(new javax.xml.namespace.QName(
-                                "http://services.slaughterhouse.dk", "return"),
-                            xmlWriter);
-                    } else {
-                        writeStartElement(null,
-                            "http://services.slaughterhouse.dk", "return",
-                            xmlWriter);
+        if (localAnimalIdTracker) {
+            namespace = "http://model.slaughterhouse.dk/xsd";
+            writeStartElement(null, namespace, "animalId", xmlWriter);
 
-                        // write the nil attribute
-                        writeAttribute("xsi",
-                            "http://www.w3.org/2001/XMLSchema-instance", "nil",
-                            "1", xmlWriter);
-                        xmlWriter.writeEndElement();
-                    }
-                }
+            if (localAnimalId == java.lang.Integer.MIN_VALUE) {
+                throw new org.apache.axis2.databinding.ADBException(
+                    "animalId cannot be null!!");
             } else {
-                writeStartElement(null, "http://services.slaughterhouse.dk",
-                    "return", xmlWriter);
+                xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(
+                        localAnimalId));
+            }
 
+            xmlWriter.writeEndElement();
+        }
+
+        if (localPartIdTracker) {
+            namespace = "http://model.slaughterhouse.dk/xsd";
+            writeStartElement(null, namespace, "partId", xmlWriter);
+
+            if (localPartId == java.lang.Integer.MIN_VALUE) {
+                throw new org.apache.axis2.databinding.ADBException(
+                    "partId cannot be null!!");
+            } else {
+                xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(
+                        localPartId));
+            }
+
+            xmlWriter.writeEndElement();
+        }
+
+        if (localTypeTracker) {
+            namespace = "http://model.slaughterhouse.dk/xsd";
+            writeStartElement(null, namespace, "type", xmlWriter);
+
+            if (localType == null) {
                 // write the nil attribute
                 writeAttribute("xsi",
                     "http://www.w3.org/2001/XMLSchema-instance", "nil", "1",
                     xmlWriter);
-                xmlWriter.writeEndElement();
+            } else {
+                xmlWriter.writeCharacters(localType);
             }
+
+            xmlWriter.writeEndElement();
+        }
+
+        if (localWeightTracker) {
+            namespace = "http://model.slaughterhouse.dk/xsd";
+            writeStartElement(null, namespace, "weight", xmlWriter);
+
+            if (java.lang.Float.isNaN(localWeight)) {
+                throw new org.apache.axis2.databinding.ADBException(
+                    "weight cannot be null!!");
+            } else {
+                xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(
+                        localWeight));
+            }
+
+            xmlWriter.writeEndElement();
         }
 
         xmlWriter.writeEndElement();
     }
 
     private static java.lang.String generatePrefix(java.lang.String namespace) {
-        if (namespace.equals("http://services.slaughterhouse.dk")) {
-            return "ns2";
+        if (namespace.equals("http://model.slaughterhouse.dk/xsd")) {
+            return "ns1";
         }
 
         return org.apache.axis2.databinding.utils.BeanUtil.getUniquePrefix();
@@ -374,9 +483,9 @@ public class TrackAnimalResponse implements org.apache.axis2.databinding.ADBBean
          * Postcondition: If this object is an element, the reader is positioned at its end element
          *                If this object is a complex type, the reader is positioned at the end element of its outer element
          */
-        public static TrackAnimalResponse parse(
-            javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception {
-            TrackAnimalResponse object = new TrackAnimalResponse();
+        public static Part parse(javax.xml.stream.XMLStreamReader reader)
+            throws java.lang.Exception {
+            Part object = new Part();
 
             int event;
             javax.xml.namespace.QName currentQName = null;
@@ -408,12 +517,12 @@ public class TrackAnimalResponse implements org.apache.axis2.databinding.ADBBean
                         java.lang.String type = fullTypeName.substring(fullTypeName.indexOf(
                                     ":") + 1);
 
-                        if (!"trackAnimalResponse".equals(type)) {
+                        if (!"Part".equals(type)) {
                             //find namespace for the prefix
                             java.lang.String nsUri = reader.getNamespaceContext()
                                                            .getNamespaceURI(nsPrefix);
 
-                            return (TrackAnimalResponse) dk.slaughterhouse.services.ExtensionMapper.getTypeObject(nsUri,
+                            return (Part) dk.slaughterhouse.services.ExtensionMapper.getTypeObject(nsUri,
                                 type, reader);
                         }
                     }
@@ -425,76 +534,122 @@ public class TrackAnimalResponse implements org.apache.axis2.databinding.ADBBean
 
                 reader.next();
 
-                java.util.ArrayList list1 = new java.util.ArrayList();
+                while (!reader.isStartElement() && !reader.isEndElement())
+                    reader.next();
+
+                if ((reader.isStartElement() &&
+                        new javax.xml.namespace.QName(
+                            "http://model.slaughterhouse.dk/xsd", "animalId").equals(
+                            reader.getName())) ||
+                        new javax.xml.namespace.QName("", "animalId").equals(
+                            reader.getName())) {
+                    nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance",
+                            "nil");
+
+                    if ("true".equals(nillableValue) ||
+                            "1".equals(nillableValue)) {
+                        throw new org.apache.axis2.databinding.ADBException(
+                            "The element: " + "animalId" + "  cannot be null");
+                    }
+
+                    java.lang.String content = reader.getElementText();
+
+                    object.setAnimalId(org.apache.axis2.databinding.utils.ConverterUtil.convertToInt(
+                            content));
+
+                    reader.next();
+                } // End of if for expected property start element
+
+                else {
+                    object.setAnimalId(java.lang.Integer.MIN_VALUE);
+                }
 
                 while (!reader.isStartElement() && !reader.isEndElement())
                     reader.next();
 
                 if ((reader.isStartElement() &&
                         new javax.xml.namespace.QName(
-                            "http://services.slaughterhouse.dk", "return").equals(
+                            "http://model.slaughterhouse.dk/xsd", "partId").equals(
                             reader.getName())) ||
-                        new javax.xml.namespace.QName("", "return").equals(
+                        new javax.xml.namespace.QName("", "partId").equals(
                             reader.getName())) {
-                    // Process the array and step past its final element's end.
                     nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance",
                             "nil");
 
                     if ("true".equals(nillableValue) ||
                             "1".equals(nillableValue)) {
-                        list1.add(null);
-                        reader.next();
-                    } else {
-                        list1.add(dk.slaughterhouse.model.xsd.Product.Factory.parse(
-                                reader));
+                        throw new org.apache.axis2.databinding.ADBException(
+                            "The element: " + "partId" + "  cannot be null");
                     }
 
-                    //loop until we find a start element that is not part of this array
-                    boolean loopDone1 = false;
+                    java.lang.String content = reader.getElementText();
 
-                    while (!loopDone1) {
-                        // We should be at the end element, but make sure
-                        while (!reader.isEndElement())
-                            reader.next();
+                    object.setPartId(org.apache.axis2.databinding.utils.ConverterUtil.convertToInt(
+                            content));
 
-                        // Step out of this element
-                        reader.next();
-
-                        // Step to next element event.
-                        while (!reader.isStartElement() &&
-                                !reader.isEndElement())
-                            reader.next();
-
-                        if (reader.isEndElement()) {
-                            //two continuous end elements means we are exiting the xml structure
-                            loopDone1 = true;
-                        } else {
-                            if (new javax.xml.namespace.QName(
-                                        "http://services.slaughterhouse.dk",
-                                        "return").equals(reader.getName())) {
-                                nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance",
-                                        "nil");
-
-                                if ("true".equals(nillableValue) ||
-                                        "1".equals(nillableValue)) {
-                                    list1.add(null);
-                                    reader.next();
-                                } else {
-                                    list1.add(dk.slaughterhouse.model.xsd.Product.Factory.parse(
-                                            reader));
-                                }
-                            } else {
-                                loopDone1 = true;
-                            }
-                        }
-                    }
-
-                    // call the converter utility  to convert and set the array
-                    object.set_return((dk.slaughterhouse.model.xsd.Product[]) org.apache.axis2.databinding.utils.ConverterUtil.convertToArray(
-                            dk.slaughterhouse.model.xsd.Product.class, list1));
+                    reader.next();
                 } // End of if for expected property start element
 
                 else {
+                    object.setPartId(java.lang.Integer.MIN_VALUE);
+                }
+
+                while (!reader.isStartElement() && !reader.isEndElement())
+                    reader.next();
+
+                if ((reader.isStartElement() &&
+                        new javax.xml.namespace.QName(
+                            "http://model.slaughterhouse.dk/xsd", "type").equals(
+                            reader.getName())) ||
+                        new javax.xml.namespace.QName("", "type").equals(
+                            reader.getName())) {
+                    nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance",
+                            "nil");
+
+                    if (!"true".equals(nillableValue) &&
+                            !"1".equals(nillableValue)) {
+                        java.lang.String content = reader.getElementText();
+
+                        object.setType(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(
+                                content));
+                    } else {
+                        reader.getElementText(); // throw away text nodes if any.
+                    }
+
+                    reader.next();
+                } // End of if for expected property start element
+
+                else {
+                }
+
+                while (!reader.isStartElement() && !reader.isEndElement())
+                    reader.next();
+
+                if ((reader.isStartElement() &&
+                        new javax.xml.namespace.QName(
+                            "http://model.slaughterhouse.dk/xsd", "weight").equals(
+                            reader.getName())) ||
+                        new javax.xml.namespace.QName("", "weight").equals(
+                            reader.getName())) {
+                    nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance",
+                            "nil");
+
+                    if ("true".equals(nillableValue) ||
+                            "1".equals(nillableValue)) {
+                        throw new org.apache.axis2.databinding.ADBException(
+                            "The element: " + "weight" + "  cannot be null");
+                    }
+
+                    java.lang.String content = reader.getElementText();
+
+                    object.setWeight(org.apache.axis2.databinding.utils.ConverterUtil.convertToFloat(
+                            content));
+
+                    reader.next();
+                } // End of if for expected property start element
+
+                else {
+                    object.setWeight(java.lang.Float.NaN);
                 }
 
                 while (!reader.isStartElement() && !reader.isEndElement())
