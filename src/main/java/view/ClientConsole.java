@@ -24,6 +24,9 @@ public class ClientConsole implements View {
 		show("\t4. Get all products");
 		show("\t5. Get all markets");
 		show("\t6. Add animal");
+		show("\t7. Tranport product to market");
+		show("\t8. Track animal");
+		show("\t9. Pack product");
 		show("\t0. quit");
 		show("-----------------------------------------");
 		show("* Type in your choice");
@@ -59,6 +62,15 @@ public class ClientConsole implements View {
 		            break;
 	         case 6: 
 		            controller.execute("addAnimal");
+		            break;
+	         case 7: 
+		            controller.execute("transportProducts");
+		            break;
+	         case 8: 
+		            controller.execute("trackProducts");
+		            break;
+	         case 9: 
+		            controller.execute("packProduct");
 		            break;
 	         default:
 	             show("Shutting down");
@@ -139,6 +151,13 @@ public class ClientConsole implements View {
 	public String get(String whatToGet) {
 		show("Write " + whatToGet);
 		input.nextLine();
+		String result = input.nextLine();
+		
+		return result;
+	}
+	@Override
+	public String get2(String whatToGet) {
+		show("Write " + whatToGet);
 		String result = input.nextLine();
 		
 		return result;

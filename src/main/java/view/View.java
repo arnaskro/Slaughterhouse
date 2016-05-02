@@ -19,4 +19,6 @@ public interface View {
 	public void showAllMarkets(Market[] markets);
 	
 	public String get(String whatToGet);
+	public String get2(String whatToGet);
+
 }
