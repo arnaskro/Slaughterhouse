@@ -25,4 +25,12 @@ public interface TrackingSkeletonInterface {
      */
     public dk.slaughterhouse.services.TrackAnimalResponse trackAnimal(
         dk.slaughterhouse.services.TrackAnimal trackAnimal);
+
+    /**
+     * Auto generated method signature
+     *
+     * @param trackProduct
+     */
+    public dk.slaughterhouse.services.TrackProductResponse trackProduct(
+        dk.slaughterhouse.services.TrackProduct trackProduct);
 }

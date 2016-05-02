@@ -17,5 +17,9 @@
             <actionMapping>urn:trackAnimal</actionMapping>
             <outputActionMapping>urn:trackAnimalResponse</outputActionMapping>
         </operation>
+        <operation name="trackProduct" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://services.slaughterhouse.dk">
+            <actionMapping>urn:trackProduct</actionMapping>
+            <outputActionMapping>urn:trackProductResponse</outputActionMapping>
+        </operation>
     </service>
 </serviceGroup>

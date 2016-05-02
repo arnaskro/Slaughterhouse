@@ -14,6 +14,18 @@ public class Product implements Serializable
 		this(0, "?", 0);
 	}
 	
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public void setWeight(float weight) {
+		this.weight = weight;
+	}
+
 	public Product(ArrayList<Part> parts, int productId, String type, float weight) 
 	{
 		this.parts = parts;

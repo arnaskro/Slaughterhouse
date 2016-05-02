@@ -3,6 +3,20 @@
     <wsdl:types>
         <xs:schema xmlns:ax22="http://model.slaughterhouse.dk/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://services.slaughterhouse.dk">
             <xs:import namespace="http://model.slaughterhouse.dk/xsd"/>
+            <xs:element name="trackProduct">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="args0" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="trackProductResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax22:Market"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="trackAnimal">
                 <xs:complexType>
                     <xs:sequence>
@@ -13,7 +27,7 @@
             <xs:element name="trackAnimalResponse">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax22:Product"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -31,6 +45,29 @@
             </xs:element>
         </xs:schema>
         <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://model.slaughterhouse.dk/xsd">
+            <xs:complexType name="Market">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="address" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="marketId" type="xs:int"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="products" nillable="true" type="ax21:Product"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Product">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="parts" nillable="true" type="ax21:Part"/>
+                    <xs:element minOccurs="0" name="productId" type="xs:int"/>
+                    <xs:element minOccurs="0" name="type" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="weight" type="xs:float"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Part">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="animalId" type="xs:int"/>
+                    <xs:element minOccurs="0" name="partId" type="xs:int"/>
+                    <xs:element minOccurs="0" name="type" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="weight" type="xs:float"/>
+                </xs:sequence>
+            </xs:complexType>
             <xs:complexType name="Animal">
                 <xs:sequence>
                     <xs:element minOccurs="0" name="animalId" type="xs:int"/>
@@ -40,6 +77,12 @@
             </xs:complexType>
         </xs:schema>
     </wsdl:types>
+    <wsdl:message name="trackProductRequest">
+        <wsdl:part name="parameters" element="ns:trackProduct"/>
+    </wsdl:message>
+    <wsdl:message name="trackProductResponse">
+        <wsdl:part name="parameters" element="ns:trackProductResponse"/>
+    </wsdl:message>
     <wsdl:message name="getAnimalsRequest">
         <wsdl:part name="parameters" element="ns:getAnimals"/>
     </wsdl:message>
@@ -53,6 +96,10 @@
         <wsdl:part name="parameters" element="ns:trackAnimalResponse"/>
     </wsdl:message>
     <wsdl:portType name="TrackingPortType">
+        <wsdl:operation name="trackProduct">
+            <wsdl:input message="ns:trackProductRequest" wsaw:Action="urn:trackProduct"/>
+            <wsdl:output message="ns:trackProductResponse" wsaw:Action="urn:trackProductResponse"/>
+        </wsdl:operation>
         <wsdl:operation name="getAnimals">
             <wsdl:input message="ns:getAnimalsRequest" wsaw:Action="urn:getAnimals"/>
             <wsdl:output message="ns:getAnimalsResponse" wsaw:Action="urn:getAnimalsResponse"/>
@@ -64,6 +111,15 @@
     </wsdl:portType>
     <wsdl:binding name="TrackingSoap11Binding" type="ns:TrackingPortType">
         <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="trackProduct">
+            <soap:operation soapAction="urn:trackProduct" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="getAnimals">
             <soap:operation soapAction="urn:getAnimals" style="document"/>
             <wsdl:input>
@@ -85,6 +141,15 @@
     </wsdl:binding>
     <wsdl:binding name="TrackingSoap12Binding" type="ns:TrackingPortType">
         <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="trackProduct">
+            <soap12:operation soapAction="urn:trackProduct" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="getAnimals">
             <soap12:operation soapAction="urn:getAnimals" style="document"/>
             <wsdl:input>
@@ -106,6 +171,15 @@
     </wsdl:binding>
     <wsdl:binding name="TrackingHttpBinding" type="ns:TrackingPortType">
         <http:binding verb="POST"/>
+        <wsdl:operation name="trackProduct">
+            <http:operation location="trackProduct"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="getAnimals">
             <http:operation location="getAnimals"/>
             <wsdl:input>
