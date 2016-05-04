@@ -205,6 +205,15 @@ public class DatabaseAdapter implements Persistence {
 		return result;
 	}
 
+	public void updateAnimal(int animalId, float weight) {
+		String sql = "UPDATE animal SET weight="+weight+" WHERE animal_id=" + animalId;
+		try {
+			db.update(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void saveAnimal(float weight, String type) {
 		String sql = "INSERT INTO animal (weight, type) VALUES (" + weight + ", '" + type + "');";
 		try {

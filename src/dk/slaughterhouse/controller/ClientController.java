@@ -96,9 +96,20 @@ public class ClientController implements Controller {
 		
 		
 		view.showAllParts(newParts);
-		int partId = Integer.parseInt(view.get("part Id"));
+		int partId = Integer.parseInt(view.get2("part Id"));
+		Part part = null;
 		
-		view.show("" + model.addToTray(partId, trayId));
+		for (Part tempPart : newParts) {
+			if (tempPart.getPartId() == partId) {
+				part = tempPart;
+			}
+		}
+		
+		if ((tray.getCurrentWeight() + part.getWeight()) > tray.getMaxWeight() ) {
+			view.show("Part is too big for this tray or the tray is full");
+		} else {			
+			view.show("" + model.addToTray(partId, trayId));
+		}
 	}
 	
 	private void addTray()
@@ -106,7 +117,7 @@ public class ClientController implements Controller {
 		Part[] animals = model.getAllParts();
 		view.showAllParts(animals);
 		String type = view.get("type");
-		Float maxWeight = Float.parseFloat(view.get("max weight"));
+		Float maxWeight = Float.parseFloat(view.get2("max weight"));
 		view.show("" + model.addTray(type, maxWeight));
 	}
 	
@@ -115,8 +126,8 @@ public class ClientController implements Controller {
 		Animal[] animals = model.getAllAnimals();
 		view.showAllAnimals(animals);
 		int animalId = Integer.parseInt(view.get("animal Id"));
-		Float weight = Float.parseFloat(view.get("part weight"));
-		String type = view.get("partType");
+		Float weight = Float.parseFloat(view.get2("part weight"));
+		String type = view.get2("partType");
 		view.show("" + model.addPart(animalId, type, weight));
 	}
 

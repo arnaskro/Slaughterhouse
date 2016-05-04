@@ -127,7 +127,7 @@ public class ClientConsole implements View {
 		String result = "All trays:";
 		
 		for (Tray tray : trays) {
-			result += "\n[ID:" + tray.getTrayId() + ", Type:" + tray.getType() + ", Max Weight:" + tray.getMaxWeight() + "]";
+			result += "\n[ID:" + tray.getTrayId() + ", Type:" + tray.getType() + ", Max Weight:" + tray.getMaxWeight() + ", Current Weight:" + tray.getCurrentWeight() + "]";
 		}
 		
 		show(result);

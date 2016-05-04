@@ -23,4 +23,5 @@ public interface Persistence {
 	   public void saveMarket(String address) throws IOException;
 	   public void packTraysToProduct(String type, float weight, Tray[] trays) throws IOException;
 	   public void transportTomarket(int productId, int marketId) throws IOException;
+	   public void updateAnimal(int animalId, float weight) throws IOException;
 } 

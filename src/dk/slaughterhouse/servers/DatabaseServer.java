@@ -47,7 +47,7 @@ public class DatabaseServer extends UnicastRemoteObject implements DatabaseServe
 			e.printStackTrace();
 		}
 	}
-
+	
 	public boolean addAnimal(float weight, String type) throws RemoteException {
 		try {
 			database.saveAnimal(weight, type);
@@ -61,6 +61,16 @@ public class DatabaseServer extends UnicastRemoteObject implements DatabaseServe
 
 	public boolean addPart(int animalId, String type, float weight) throws RemoteException {
 		try {
+			Animal currentAnimal = null;
+			
+			for (Animal animal:animals) {
+				if (animal.getAnimalId() == animalId) {
+					currentAnimal = animal;
+					break;
+				}
+			}
+			
+			database.updateAnimal(animalId, currentAnimal.getWeight()-weight);			
 			database.savePart(animalId, type, weight);
 			updateDatabase();
 			return true;
