@@ -18,18 +18,4 @@ public interface Model
 	public Product[] getAllProducts();
 	public Market[] getAllMarkets();
 	
-	public Animal[] getAllAnimalsByType(String type);
-	public Animal getAnimalbyId(int animalId);
-	public Part[] getAllPartsByType(String type);
-	public Part[] getAllPartsByAnimal(int animalId);
-	public Part getPart(int partId);
-	public Tray[] getAllTraysByType(String type);
-	public Tray getTrayById(int trayId);
-	public Tray[] getTraysByAnimal(int animalId);
-	public Product[] getProductsByType(String type);
-	public Product getProductById(int productId);
-	public Market getMarketByProduct(int productId);
-	public String trackAnimal(int animalId);
-	
-	
 }
